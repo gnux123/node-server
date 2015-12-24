@@ -15,8 +15,8 @@ request({
 },function(e,r,b){
 	if(!e) {
 
-		dataProcess(b);
-
+		var data = dataProcess(b);
+		console.log(data);
 	}
 
 });
@@ -34,12 +34,11 @@ router.get('/:page',function(req,res){
 
 
 var dataProcess = function(object){
-	htmlData = object;
+	var htmlData = object;
+	return object;
 }
 
 app.use('/', router);
 app.listen(port, function(){
 	console.log('server start');
 });
-
-console.log(htmlData);
