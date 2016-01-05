@@ -1,6 +1,7 @@
 //var request = require("request");
 var	cheerio = require('cheerio');
 var	express = require("express");
+// var schedule = require("node-schedule");
 var	superagent = require("superagent");
 
 var app = express();
@@ -20,9 +21,23 @@ var weatherUri = "http://www.cwb.gov.tw/V7/observe/real/ALLData.htm?_=1451961360
 //
 // });
 
+//client UI design
+router.get('/',function(req,res){
+    res.sendfile(__dirname + '/app/index.html');
+});
+
 router.get('/:gates/:zone',function(req,res){
     var gates = req.params.gates;
     var zone = req.params.zone;
+
+    //jobwork timing.
+    // var rule = new schedule.RecurrenceRule();
+    // rule.second = 30;
+    // var job = new schedule.scheduleJob(rule, function(){
+    //     console.log(new Date(), 'The 30th second of the minute.');
+    // });
+
+
     superagent.get(apiUri+gates+"/"+zone).end(function (err, sres) {
         if (err) { return next(err); }
         //console.log(sres);

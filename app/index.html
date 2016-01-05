@@ -1,4 +1,33 @@
+<!DOCTYPE html>
 <html>
-<h1> hello world!!! </h1>
-<a href='aboutme.html'>About Me</a>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
+		<script>
+			$(function(){
+				var apiUri = "http://localhost:3000";
+
+				$.ajax({
+					url: apiUri+"/Home/GetLeftMenu",
+					dataType: "json",
+				    success: function(data) {
+				      output(data);
+				    },
+					error: function(xhr, ajaxOptions, thrownError) {
+				      alert("load errors");
+				    }
+				});
+
+				function output(jdata){
+					console.log(jdata);
+				}
+
+			});
+
+		</script>
+	</head>
+	<body>
+
+	</body>
 </html>
