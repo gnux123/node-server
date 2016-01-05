@@ -1,14 +1,14 @@
-var request = require("request");
+//var request = require("request");
 var	cheerio = require('cheerio');
 var	express = require("express");
 var	superagent = require("superagent");
+
 var app = express();
 var port = process.env.PORT || 3000;
-
 var router = express.Router();
 
-var apiUri = "https://secure.newegg.com.tw/";
-
+var apiUri = "http://www.newegg.com.tw/";
+var weatherUri = "http://www.cwb.gov.tw/V7/observe/real/ALLData.htm?_=1451961360440";
 
 // request({
 // 	url: apiUri,
@@ -20,47 +20,80 @@ var apiUri = "https://secure.newegg.com.tw/";
 //
 // });
 
-router.get('/',function(req,res){
-    superagent.get(apiUri).end(function (err, sres) {
+router.get('/:gates/:zone',function(req,res){
+    var gates = req.params.gates;
+    var zone = req.params.zone;
+    superagent.get(apiUri+gates+"/"+zone).end(function (err, sres) {
         if (err) { return next(err); }
         //console.log(sres);
+        // res.send(sres.text);
         var $ = cheerio.load(sres.text);
-        var contents = [];
-        $(".box2").each(function(){
-            var item = $(this).find(".pic").attr("cellitemid");
-            var _link = $(this).find("a").attr("href");
-            var _img = $(this).find(".itemImgCen").attr("src");
-            var _push = $(this).find(".subTit").text();
-            var _prodName = $(this).find(".caption").text();
-            var _price = $(this).find(".price").html();
-            var _marketPrice = $(this).find(".marketPrice").html();
-            contents.push({
-                "itemID": item,
-                "link": _link,
-                "imageUrl": _img,
-                "pushText": _push,
-                "productName": _prodName,
-                "price": _price,
-                "marketPrice": _marketPrice
+        var content = $(".pullDownList");
+        var secMenu = $("#SecMenu");
+        var lists = [];
+        var secLists = [];
+        var thirdLists = [];
+
+        //主選單
+        $(".pullDownList li").each(function(){
+            var _index = $(this).index();
+            var _texts = $(this).find("a").text();
+            var _links = $(this).find("a").attr("href");
+            var _class = $(this).find("i").attr("class");
+
+            //第二層選單
+            secMenu.find("ul").eq(_index).find("li").each(function(){
+                var _secIndex = $(this).index();
+                var _secName = $(this).find("a").text(),
+                    _secID = $(this).attr("categoryid");
+
+                //第三層選單
+                // $(".yMenuLCinList").eq(_secIndex).find("a").each(function(){
+                //     var _thirdTit = $(this).text(),
+                //         _thirdLink = $(this).attr("href");
+                //
+                //     thirdLists.push({
+                //         Title: _thirdTit,
+                //         Links: _thirdLink
+                //     });
+                // });
+
+
+                secLists.push({
+                    CategoryId: _secID,
+                    secName: _secName
+                    // thirdCates: thirdLists
+                });
+            });
+
+            lists.push({
+                className: _class,
+                cateslink: _links,
+                catesName: _texts,
+                subCates: secLists
             });
         });
-        res.send(contents);
+
+        res.send(lists);
 
     });
-    //res.sendfile(__dirname + '/app/index.html');
 });
 
 router.get('/item/:itemID',function(req,res){
     var items = req.params.itemID;
+
     superagent.get(apiUri+"/item?itemid="+items).end(function (err, sres) {
         if (err) { return next(err); }
         console.log(sres.text);
         res.send(sres.text);
     });
-	// var pageName = req.params.page.split(".");
-	// if (pageName[1]=="html" || pageName[1] == null) {
-	// 	res.sendfile(__dirname + '/app/'+pageName[0]+'.html');
-	// }
+});
+
+router.get('/weather',function(req,res){
+    superagent.get(weatherUri).end(function (err, sres) {
+        if (err) { return next(err); }
+        res.send(sres.text);
+    });
 });
 
 app.use('/', router);
