@@ -49,19 +49,37 @@ router.get('/:gates/:zone',function(req,res){
         var secLists = [];
         var thirdLists = [];
 
+        var newData = [];
         //主選單
         $(".pullDownList li").each(function(){
-            var _index = $(this).index();
-            var _texts = $(this).find("a").text();
-            var _links = $(this).find("a").attr("href");
-            var _class = $(this).find("i").attr("class");
+            newData.push({
+                _index:$(this).attr("categoryid"),
+                _texts:$(this).find("a").text(),
+                _links:$(this).find("a").attr("href"),
+                _class:$(this).find("i").attr("class")
+            })
+        });
 
-            //第二層選單
-            secMenu.find("ul").eq(_index).find("li").each(function(){
-                var _secIndex = $(this).index();
-                var _secName = $(this).find("a").text(),
-                    _secID = $(this).attr("categoryid");
+        for (var i = 0; i < newData.length; i++) {
+            secLists[i] = [];
+            $("#SecMenu > ul[parentid='"+ newData[i]["_index"] +"'] > li").each(function(index, element){
+                secLists[i].push({
+                    CategoryId: $(element).attr("categoryid"),
+                    secName: $(element).find("a").text()
+                    // thirdCates: thirdLists
+                });
+            });
 
+            console.log();
+
+            lists.push({
+                className: newData[i]["_class"],
+                cateslink: newData[i]["_links"],
+                catesName: newData[i]["_texts"],
+                subCates: secLists[i]
+            });
+
+        };
                 //第三層選單
                 // $(".yMenuLCinList").eq(_secIndex).find("a").each(function(){
                 //     var _thirdTit = $(this).text(),
@@ -72,22 +90,6 @@ router.get('/:gates/:zone',function(req,res){
                 //         Links: _thirdLink
                 //     });
                 // });
-
-
-                secLists.push({
-                    CategoryId: _secID,
-                    secName: _secName
-                    // thirdCates: thirdLists
-                });
-            });
-
-            lists.push({
-                className: _class,
-                cateslink: _links,
-                catesName: _texts,
-                subCates: secLists
-            });
-        });
 
         res.send(lists);
 
