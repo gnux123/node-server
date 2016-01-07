@@ -20,13 +20,22 @@
 				});
 
 				function output(jdata){
+					console.log(jdata);
 					$("body").append("<ul class='mainMenu'></ul>");
 
 					$.each(jdata, function(key,value){
 						var _cateName = jdata[key].catesName,
-							_link = jdata[key].cateslink;
-						console.log(_link);
-						$(".mainMenu").append("<li><a href='http://www.newegg.com.tw"+_link+"'>"+_cateName+"</a></li>");
+							_link = jdata[key].cateslink,
+							subCates = jdata[key].subCates;
+						$(".mainMenu").append("<li><a href='http://www.newegg.com.tw"+_link+"'>"+_cateName+"</a>\
+						<div class='subMenu'></div>\
+						</li>");
+
+						$.each(subCates, function(index,value){
+							var subName = subCates[index][0].secName;
+							$(".mainMenu li").eq(key).find(".subMenu").append("<div>"+subName+"</div>");
+						});
+
 					});
 				}
 

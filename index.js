@@ -40,8 +40,8 @@ router.get('/:gates/:zone',function(req,res){
 
     superagent.get(apiUri+gates+"/"+zone).end(function (err, sres) {
         if (err) { return next(err); }
-        //console.log(sres);
-        // res.send(sres.text);
+
+
         var $ = cheerio.load(sres.text);
         var content = $(".pullDownList");
         var secMenu = $("#SecMenu");
@@ -62,15 +62,36 @@ router.get('/:gates/:zone',function(req,res){
 
         for (var i = 0; i < newData.length; i++) {
             secLists[i] = [];
+
             $("#SecMenu > ul[parentid='"+ newData[i]["_index"] +"'] > li").each(function(index, element){
                 secLists[i].push({
                     CategoryId: $(element).attr("categoryid"),
                     secName: $(element).find("a").text()
-                    // thirdCates: thirdLists
                 });
             });
 
-            console.log();
+            for (var j = 0; j < secLists[i].length; j++) {
+                thirdLists[j] = [];
+
+                $(".yMenuColLCinList > div[parentid='"+secLists[i][j]["CategoryId"]+"'] > p a").each(function(index, element){
+                    thirdLists[j].push({
+                        link: $(element).attr("href"),
+                        desc: $(element).text()
+                    });
+                });
+
+                var secID = secLists[i][j]["CategoryId"],
+                    secCateName = secLists[i][j]["secName"];
+
+                secLists[i][j] = [];
+
+                secLists[i][j].push({
+                    CategoryId: secID,
+                    secName: secCateName,
+                    thirtCates: thirdLists[j]
+                });
+
+            };
 
             lists.push({
                 className: newData[i]["_class"],
@@ -78,18 +99,7 @@ router.get('/:gates/:zone',function(req,res){
                 catesName: newData[i]["_texts"],
                 subCates: secLists[i]
             });
-
         };
-                //第三層選單
-                // $(".yMenuLCinList").eq(_secIndex).find("a").each(function(){
-                //     var _thirdTit = $(this).text(),
-                //         _thirdLink = $(this).attr("href");
-                //
-                //     thirdLists.push({
-                //         Title: _thirdTit,
-                //         Links: _thirdLink
-                //     });
-                // });
 
         res.send(lists);
 
