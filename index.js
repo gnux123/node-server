@@ -9,7 +9,6 @@ var port = process.env.PORT || 3000;
 var router = express.Router();
 
 var apiUri = "http://www.newegg.com.tw/";
-var weatherUri = "http://www.cwb.gov.tw/V7/observe/real/ALLData.htm?_=1451961360440";
 
 // request({
 // 	url: apiUri,
@@ -30,19 +29,46 @@ router.get('/:gates/:zone',function(req,res){
     var gates = req.params.gates;
     var zone = req.params.zone;
 
-    //jobwork timing.
-    // var rule = new schedule.RecurrenceRule();
-    // rule.second = 30;
-    // var job = new schedule.scheduleJob(rule, function(){
-    //     console.log(new Date(), 'The 30th second of the minute.');
-    // });
-
-
     superagent.get(apiUri+gates+"/"+zone).end(function (err, sres) {
         if (err) { return next(err); }
+        var contents = cheerio.load(sres.text);
+
+        if(zone == "GetLeftMenu") {
+            res.send(init.homeMenu(contents));
+        }else if(zone == "GetTopAdvertise") {
+            res.send(init.ADLists(contents));
+        }
+
+    });
+});
 
 
-        var $ = cheerio.load(sres.text);
+// router.get('/item/:itemID',function(req,res){
+//     var items = req.params.itemID;
+//
+//     superagent.get(apiUri+"/item?itemid="+items).end(function (err, sres) {
+//         if (err) { return next(err); }
+//         console.log(sres.text);
+//         res.send(sres.text);
+//     });
+// });
+//
+// router.get('/weather',function(req,res){
+//     superagent.get(weatherUri).end(function (err, sres) {
+//         if (err) { return next(err); }
+//         res.send(sres.text);
+//     });
+// });
+
+app.use('/', router);
+app.listen(port, function(){
+	console.log('server start');
+});
+
+
+var init = {
+    homeMenu: function(object) {
+        var $ = object;
         var content = $(".pullDownList");
         var secMenu = $("#SecMenu");
         var lists = [];
@@ -73,7 +99,11 @@ router.get('/:gates/:zone',function(req,res){
             for (var j = 0; j < secLists[i].length; j++) {
                 thirdLists[j] = [];
 
-                $(".yMenuColLCinList > div[parentid='"+secLists[i][j]["CategoryId"]+"'] > p a").each(function(index, element){
+                var thirdMenus = $(".yMenuColLCinList > div[parentid='"+secLists[i][j]["CategoryId"]+"']"),
+                    adImg = thirdMenus.find(".MenuListImg").find("img").attr("src"),
+                    adImgLink = thirdMenus.find(".MenuListImg").find("a").attr("href");
+
+                thirdMenus.find("p > a").each(function(index, element){
                     thirdLists[j].push({
                         link: $(element).attr("href"),
                         desc: $(element).text()
@@ -88,6 +118,8 @@ router.get('/:gates/:zone',function(req,res){
                 secLists[i][j].push({
                     CategoryId: secID,
                     secName: secCateName,
+                    ImgAD: adImg,
+                    ImgADLink: adImgLink,
                     thirtCates: thirdLists[j]
                 });
 
@@ -101,54 +133,25 @@ router.get('/:gates/:zone',function(req,res){
             });
         };
 
-        res.send(lists);
+        return lists;
+    },
+    ADLists: function(object){
+        var $ = object;
+        var lists = [];
+        var imgShow = $(".banner-img"),
+            tab = $(".tab ul"),
+            colors = $(".banner-bg");
 
-    });
-});
-
-router.get('/item/:itemID',function(req,res){
-    var items = req.params.itemID;
-
-    superagent.get(apiUri+"/item?itemid="+items).end(function (err, sres) {
-        if (err) { return next(err); }
-        console.log(sres.text);
-        res.send(sres.text);
-    });
-});
-
-router.get('/weather',function(req,res){
-    superagent.get(weatherUri).end(function (err, sres) {
-        if (err) { return next(err); }
-        res.send(sres.text);
-    });
-});
-
-app.use('/', router);
-app.listen(port, function(){
-	console.log('server start');
-});
+        imgShow.find("a").each(function(index,element){
+            lists.push({
+                mainImg: $(element).find("img").attr("src"),
+                mainImgLink: $(element).attr("href"),
+                mainImgBgColor: colors.find("div").eq(index).text(),
+                mainActiveName: tab.find("li").eq(index).text().trim()
+            });
+        });
 
 
-// // 台南市的氣溫
-// var apiUrl = "http://tw.yahoo.com/";
-//
-// // 取得網頁資料
-// request(apiUrl, function (error, response, body) {
-//   if (!error) {
-// 	//console.log(body);
-//     // 用 cheerio 解析 html 資料
-//     var $ = cheerio.load(body);
-// 	// var lists = $(".section").eq(0).html();
-//     // 篩選有興趣的資料
-//     // var temperature = $("[data-variable='temperature'] .wx-value").html();
-//     // var humidity = $("[data-variable='humidity'] .wx-value").html();
-//
-//     // 輸出
-//     // console.log("氣溫：攝氏 " + temperature + " 度");
-//     // console.log("濕度：" + humidity + "%");
-// 	console.log(body);
-//
-//   } else {
-//     console.log("擷取錯誤：" + error);
-//   }
-// });
+        return lists;
+    }
+}
