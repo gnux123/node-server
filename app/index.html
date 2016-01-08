@@ -33,7 +33,34 @@
 
 						$.each(subCates, function(index,value){
 							var subName = subCates[index][0].secName;
-							$(".mainMenu li").eq(key).find(".subMenu").append("<div>"+subName+"</div>");
+							var adImg = subCates[index][0].ImgAD;
+							var adImgLink = subCates[index][0].ImgADLink;
+							var secMenus = $(".mainMenu li").eq(key).find(".subMenu");
+
+							if(adImg == undefined && adImgLink == undefined){
+								secMenus.append("<div><h4>"+subName+"</h4>\
+								<div class='thirdCates'></div>\
+								</div>");
+								childCates();
+							}else{
+								//
+								secMenus.append("<div><h4>"+subName+"</h4>\
+								<a href='http://www.newegg.com.tw"+adImgLink+"'><img src='"+adImg+"' /></a>\
+								<div class='thirdCates'></div>\
+								</div>");
+								childCates();
+							}
+
+
+							//第三層
+							function childCates(){
+								var childCates = subCates[index][0].thirdCates;
+								for(i = 0; i < childCates.length; i++){
+									secMenus.children("div").eq(index).find(".thirdCates").append("<p><a href='http://www.newegg.com.tw"+childCates[i].link+"'>"+childCates[i].desc+"</a></p>");
+
+								}
+							}
+
 						});
 
 					});
