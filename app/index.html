@@ -6,71 +6,79 @@
 		<script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
 		<script>
 			$(function(){
-				var apiUri = "http://localhost:3000";
-
-				$.ajax({
-					url: apiUri+"/Home/GetLeftMenu",
-					dataType: "json",
-				    success: function(data) {
-				      output(data);
-				    },
-					error: function(xhr, ajaxOptions, thrownError) {
-				      alert("load errors");
-				    }
-				});
-
-				function output(jdata){
-					console.log(jdata);
-					$("body").append("<ul class='mainMenu'></ul>");
-
-					$.each(jdata, function(key,value){
-						var _cateName = jdata[key].catesName,
-							_link = jdata[key].cateslink,
-							subCates = jdata[key].subCates;
-						$(".mainMenu").append("<li><a href='http://www.newegg.com.tw"+_link+"'>"+_cateName+"</a>\
-						<div class='subMenu'></div>\
-						</li>");
-
-						$.each(subCates, function(index,value){
-							var subName = subCates[index][0].secName;
-							var adImg = subCates[index][0].ImgAD;
-							var adImgLink = subCates[index][0].ImgADLink;
-							var secMenus = $(".mainMenu li").eq(key).find(".subMenu");
-
-							if(adImg == undefined && adImgLink == undefined){
-								secMenus.append("<div><h4>"+subName+"</h4>\
-								<div class='thirdCates'></div>\
-								</div>");
-								childCates();
-							}else{
-								//
-								secMenus.append("<div><h4>"+subName+"</h4>\
-								<a href='http://www.newegg.com.tw"+adImgLink+"'><img src='"+adImg+"' /></a>\
-								<div class='thirdCates'></div>\
-								</div>");
-								childCates();
-							}
-
-
-							//第三層
-							function childCates(){
-								var childCates = subCates[index][0].thirdCates;
-								for(i = 0; i < childCates.length; i++){
-									secMenus.children("div").eq(index).find(".thirdCates").append("<p><a href='http://www.newegg.com.tw"+childCates[i].link+"'>"+childCates[i].desc+"</a></p>");
-
-								}
-							}
-
+				var data = {
+					apiUri: "http://localhost:3000",
+					getData: function(objUri){
+						$.ajax({
+							url: objUri+"/Home/GetLeftMenu",
+							dataType: "json",
+						    success: function(data) {
+								output(data);
+						    },
+							error: function(xhr, ajaxOptions, thrownError) {
+						      alert("load errors");
+						    }
 						});
 
-					});
-				}
+						function output(content){
+							data.menuProcess(content);
+						}
+
+					},
+					menuProcess: function(jdata){
+						$("body").append("<ul class='mainMenu'></ul>");
+
+						$.each(jdata, function(key,value){
+							var _cateName = jdata[key].catesName,
+								_link = jdata[key].cateslink,
+								subCates = jdata[key].subCates;
+							$(".mainMenu").append("<li><a href='http://www.newegg.com.tw"+_link+"'>"+_cateName+"</a>\
+							<div class='subMenu'></div>\
+							</li>");
+
+							$.each(subCates, function(index,value){
+								var subName = subCates[index][0].secName;
+								var adImg = subCates[index][0].ImgAD;
+								var adImgLink = subCates[index][0].ImgADLink;
+								var secMenus = $(".mainMenu li").eq(key).find(".subMenu");
+
+								if(adImg == undefined && adImgLink == undefined){
+									secMenus.append("<div><h4>"+subName+"</h4>\
+									<div class='thirdCates'></div>\
+									</div>");
+								}else{
+									secMenus.append("<div><h4>"+subName+"</h4>\
+									<a href='http://www.newegg.com.tw"+adImgLink+"'><img src='"+adImg+"' /></a>\
+									<div class='thirdCates'></div>\
+									</div>");
+								}
+								childCates();
+
+								//第三層
+								function childCates(){
+									var childCates = subCates[index][0].thirdCates;
+									for(i = 0; i < childCates.length; i++){
+										secMenus.children("div").eq(index).find(".thirdCates").append("<p><a href='http://www.newegg.com.tw"+childCates[i].link+"'>"+childCates[i].desc+"</a></p>");
+
+									}
+								}
+
+							});
+
+						});
+					}
+				};
+
+				data.getData(data.apiUri);
 
 			});
 
 		</script>
 	</head>
 	<body>
-
+		<div class="container">
+			<div class="toolbar">
+			</div>
+		</div>
 	</body>
 </html>
