@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
 		<script>
 			$(function(){
 				var data = {
@@ -28,7 +29,7 @@
 					},
 					//資料綁定
 					menuProcess: function(jdata){
-						$(".toolbar").append("<label class='mainMenu--Btn' for='mainMenuBtn'>MenuBtn</label><input id='mainMenuBtn' type='checkbox' hidden><ul class='mainMenu'></ul>");
+						$(".toolbar").append("<input id='mainMenuBtn' type='checkbox' hidden><label class='mainMenu--Btn' for='mainMenuBtn'>MenuBtn</label><ul class='mainMenu'></ul>");
 
 						$.each(jdata, function(key,value){
 							var _cateName = jdata[key].catesName,
@@ -36,7 +37,9 @@
 								subCates = jdata[key].subCates;
 							//http://www.newegg.com.tw"+_link+"
 							$(".mainMenu").append("<li><a href='javascript:void(0);'>"+_cateName+"</a></li>");
-							$(".container").append("<div class='subMenu'></div>");
+							$(".container").append("<div class='subMenu'>\
+								<div class='slider single-item adImgCollect'></div>\
+							</div>");
 
 
 							$.each(subCates, function(index,value){
@@ -45,15 +48,12 @@
 								var adImgLink = subCates[index][0].ImgADLink;
 								var secMenus = $(".subMenu").eq(key);
 
-								if(adImg == undefined && adImgLink == undefined){
-									secMenus.append("<div><h4>"+subName+"</h4>\
-									<div class='thirdCates'></div>\
-									</div>");
-								}else{
-									secMenus.append("<div><h4>"+subName+"</h4>\
-									<a href='http://www.newegg.com.tw"+adImgLink+"'><img src='"+adImg+"' /></a>\
-									<div class='thirdCates'></div>\
-									</div>");
+								secMenus.append("<div><h4>"+subName+"</h4>\
+								<div class='thirdCates'></div>\
+								</div>");
+
+								if(adImg != undefined && adImgLink != undefined){
+									secMenus.find(".adImgCollect").append("<div><a href='http://www.newegg.com.tw"+adImgLink+"'><img src='"+adImg+"' /></a></div>");
 								}
 								childCates();
 
@@ -72,18 +72,26 @@
 					},
 					//效果設計
 					effects: function(){
+						$(".adImgCollect").each(function(){ $(this).slick(); });
 						$(".subMenu").hide();
+
 						$(".mainMenu").click(function(){
 							$("#mainMenuBtn[type='checkbox']").attr("checked",false);
 						});
 
 						$(".subMenu").eq(0).show();
+						var defaultText = $(".mainMenu").find("li").eq(0).text();
+						$(".toolbar > h3").text(defaultText);
 
 						$(".mainMenu").find("li").each(function(index){
 							$(this).click(function(){
+								var _text = $(this).children("a").text();
+								$(".toolbar > h3").text(_text);
 								$(".subMenu").eq(index).fadeIn().siblings(".subMenu").hide();
 							});
 						});
+
+
 					}
 				};
 
@@ -92,7 +100,39 @@
 			});
 
 		</script>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
 		<style>
+			html, body {
+				margin: 0;
+				padding: 0;
+				font-family: "ariel","微軟正黑體";
+			}
+
+			.toolbar {
+				position: relative;
+				width: 100%;
+				height: 50px;
+				border-bottom: 1px solid #333;
+				background: #ececec;
+			}
+
+			.toolbar > h3 {
+				position: absolute;
+				z-index: 0;
+				display: block;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				letter-spacing: 1px;
+			}
+
 			.mainMenu {
 				display:none;
 				position: fixed;
@@ -106,12 +146,14 @@
 				clear: both;
 
 				list-style: none;
-				background: rgba(0,0,0,.5);
+				background: rgba(0,0,0,.8);
 
 			}
 
-			#mainMenuBtn[type='checkbox']:checked ~.mainMenu { display: block; }
-
+			#mainMenuBtn[type='checkbox']:checked ~ .mainMenu { display: block; }
+			#mainMenuBtn[type='checkbox']:checked + .mainMenu--Btn {
+				position: fixed;
+			}
 			.mainMenu > li {
 				float:left;
 				display: inline-block;
@@ -122,6 +164,16 @@
 			.mainMenu--Btn {
 				position: relative;
 				z-index: 99;
+				top: 5px;
+				left: 5px;
+				display: block;
+				width: 40px;
+				height: 0;
+				padding-top: 40px;
+				overflow: hidden;
+
+				border: 1px solid #ccc;
+				box-sizing: border-box;
 			}
 
 			.mainMenu > li > a {
@@ -141,6 +193,7 @@
 	<body>
 		<div class="container">
 			<div class="toolbar">
+				<h3></h3>
 			</div>
 		</div>
 
