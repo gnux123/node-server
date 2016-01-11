@@ -33,6 +33,22 @@ router.get('/Home/:zone',function(req,res){
     });
 });
 
+router.get('/cates',function(req,res){
+    superagent.get(apiUri+"/Category/NextPageItemListMenu?CategoryID=3332&Page=2&ItemsQty=36").end(function (err, sres) {
+        if (err) { return next(err); }
+        var contents = cheerio.load(sres.text);
+
+        console.log(sres.text);
+
+        // if(zone == "GetLeftMenu") {
+        //     res.send(home.menu(contents));
+        // }else if(zone == "GetTopAdvertise") {
+        //     res.send(home.events(contents));
+        // }
+
+    });
+});
+
 app.use('/', router);
 app.listen(port, function(){
 	console.log('server start');
