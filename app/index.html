@@ -22,25 +22,28 @@
 
 						function output(content){
 							data.menuProcess(content);
+							data.effects();
 						}
 
 					},
+					//資料綁定
 					menuProcess: function(jdata){
-						$("body").append("<ul class='mainMenu'></ul>");
+						$(".toolbar").append("<label class='mainMenu--Btn' for='mainMenuBtn'>MenuBtn</label><input id='mainMenuBtn' type='checkbox' hidden><ul class='mainMenu'></ul>");
 
 						$.each(jdata, function(key,value){
 							var _cateName = jdata[key].catesName,
 								_link = jdata[key].cateslink,
 								subCates = jdata[key].subCates;
-							$(".mainMenu").append("<li><a href='http://www.newegg.com.tw"+_link+"'>"+_cateName+"</a>\
-							<div class='subMenu'></div>\
-							</li>");
+							//http://www.newegg.com.tw"+_link+"
+							$(".mainMenu").append("<li><a href='javascript:void(0);'>"+_cateName+"</a></li>");
+							$(".container").append("<div class='subMenu'></div>");
+
 
 							$.each(subCates, function(index,value){
 								var subName = subCates[index][0].secName;
 								var adImg = subCates[index][0].ImgAD;
 								var adImgLink = subCates[index][0].ImgADLink;
-								var secMenus = $(".mainMenu li").eq(key).find(".subMenu");
+								var secMenus = $(".subMenu").eq(key);
 
 								if(adImg == undefined && adImgLink == undefined){
 									secMenus.append("<div><h4>"+subName+"</h4>\
@@ -66,6 +69,21 @@
 							});
 
 						});
+					},
+					//效果設計
+					effects: function(){
+						$(".subMenu").hide();
+						$(".mainMenu").click(function(){
+							$("#mainMenuBtn[type='checkbox']").attr("checked",false);
+						});
+
+						$(".subMenu").eq(0).show();
+
+						$(".mainMenu").find("li").each(function(index){
+							$(this).click(function(){
+								$(".subMenu").eq(index).fadeIn().siblings(".subMenu").hide();
+							});
+						});
 					}
 				};
 
@@ -74,11 +92,57 @@
 			});
 
 		</script>
+		<style>
+			.mainMenu {
+				display:none;
+				position: fixed;
+				z-index: 95;
+				top:0;
+				left:0;
+				width: 100%;
+				height: 100%;
+				margin:0;
+				padding:0;
+				clear: both;
+
+				list-style: none;
+				background: rgba(0,0,0,.5);
+
+			}
+
+			#mainMenuBtn[type='checkbox']:checked ~.mainMenu { display: block; }
+
+			.mainMenu > li {
+				float:left;
+				display: inline-block;
+				width: 33.3%;
+				height: auto;
+			}
+
+			.mainMenu--Btn {
+				position: relative;
+				z-index: 99;
+			}
+
+			.mainMenu > li > a {
+				display: block;
+				width: 100%;
+				height: 100%;
+
+				text-align: center;
+				line-height: 50px;
+				text-decoration: none;
+				color: #fff;
+				font-size: 33px;
+			}
+
+		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="toolbar">
 			</div>
 		</div>
+
 	</body>
 </html>
