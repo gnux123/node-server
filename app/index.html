@@ -91,6 +91,16 @@
 							});
 						});
 
+						viewResize();
+						$(window).resize(function(){ viewResize(); });
+
+						function viewResize(){
+							var $winH = $(window).height();
+
+							$(".mainMenu").height($winH);
+							$(".mainMenu").find("li").height($winH/3);
+							$(".mainMenu").find("li a").css('line-height',$winH/3+"px");
+						}
 
 					}
 				};
@@ -158,7 +168,7 @@
 				float:left;
 				display: inline-block;
 				width: 33.3%;
-				height: auto;
+				height: 33.3%;
 			}
 
 			.mainMenu--Btn {
@@ -182,7 +192,7 @@
 				height: 100%;
 
 				text-align: center;
-				line-height: 50px;
+				line-height: normal;
 				text-decoration: none;
 				color: #fff;
 				font-size: 33px;
