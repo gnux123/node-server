@@ -8,6 +8,7 @@
         $(function(){
             var itemSingle = {
                 dataUri: "http://localhost:3000",
+                target: $(".itemBox"),
                 itemsID: [],
                 itemsDataCollect: [],
                 getData: function(itemID){
@@ -37,6 +38,31 @@
 
                     itemSingle.itemsDataCollect.push({results: dataTemp});
                     return itemSingle.itemsDataCollect;
+                },
+                dataProcess: function(array){
+                    // itemSingle.target.each(function(index){
+                    //     var content = $(this).html(),
+                    //         intIdx = 0;
+                    //     var content = '', temp = '', pictemp = '';
+                    //
+                    //     while (content.indexOf("{{") != -1) {
+                    //         intStart = content.indexOf("{{");
+                    //
+                    //         if(intStart > -1){
+                    //             temp = content.substr(intStart + 2);
+                    //             intEnd = temp.indexOf('}}');
+                    //             console.log(intEnd);
+                    //             var $string = temp.substr(0, intEnd);
+                    //
+                    //             console.log($string);
+                    //
+                    //             // intIdx = intEnd + 2;
+                    //             // console.log(intIdx);
+                    //             // str = temp.substr(intIdx);
+                    //             // console.log(str);
+                    //         }
+                    //     }
+                    // });
                 }
             };
 
@@ -45,7 +71,7 @@
 
             console.log(results);
 
-
+            itemSingle.dataProcess();
         });
     </script>
 </head>
