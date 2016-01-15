@@ -1,4 +1,4 @@
-//var request = require("request");
+var request = require("request");
 var	cheerio = require('cheerio');
 var	express = require("express");
 // var schedule = require("node-schedule");
@@ -15,6 +15,34 @@ var apiUri = "http://www.newegg.com.tw/";
 router.get('/',function(req,res){
     res.sendfile(__dirname + '/app/index.html');
 });
+
+router.get('/getData/:itemID',function(req,res){
+    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // res.setHeader('Access-Control-Allow-Credentials', true);
+    var items = req.params.itemID;
+    var itemsDetail = [];
+    request({
+        url: apiUri+"/api/Item/getItemDetailByItemId?itemid="+items,
+        method: "GET"
+    }, function(e,r,b) {
+        if(!e) {
+            // b = b.replace(/\\/g,"");
+            res.send(b);
+        }
+    });
+});
+
+router.get('/events',function(req,res){
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // res.setHeader('Access-Control-Allow-Credentials', true);
+    res.sendfile(__dirname + '/app/event.html');
+});
+
 
 //server side parse data
 router.get('/Home/:zone',function(req,res){

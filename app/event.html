@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
+    <script>
+        $(function(){
+            var itemSingle = {
+                dataUri: "http://localhost:3000",
+                itemsID: [],
+                itemsDataCollect: [],
+                getData: function(itemID){
+                    // var dataTemp = [];
+                    var postData = $.ajax({
+                        url: itemSingle.dataUri+"/getData/"+itemID,
+                        dataType: "json",
+                        async: false
+                    });
+
+                    return postData.responseJSON;
+                },
+                collectItemsID: function(){
+                    $(".itemBox").each(function(){
+                        var _ID = $(this).attr("data-itemid");
+                        itemSingle.itemsID.push(_ID);
+                    });
+                },
+                collectData: function(){
+                    itemSingle.collectItemsID();
+
+                    var dataTemp = [];
+                    $.each(itemSingle.itemsID, function(key,value){
+                        var data = itemSingle.getData(value);
+                        dataTemp.push(data);
+                    });
+
+                    itemSingle.itemsDataCollect.push({results: dataTemp});
+                    return itemSingle.itemsDataCollect;
+                }
+            };
+
+            var dataLists = itemSingle.collectData(),
+                results = dataLists[0].results;
+
+            console.log(results);
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="cubes small" style="top:140px; left:5px;">
+        <div class="itemBox" data-itemid="511144">
+            <div class="pic">
+                <a href="{{itemLink}}" target="_blank">
+                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                </a>
+            </div>
+            <div class="txt">
+                <a href="{{itemLink}}" target="_blank">
+                    <p class="SubTitle">{{itemSubTitle}}</p>
+                    <h3>{{itemName_50}}</h3>
+                    {{itemMarketPrice}}{{itemPrice}}
+                </a>
+                {{itemAddToSC}}
+            </div>
+        </div>
+    </div>
+    <div class="cubes small" style="top:140px; left: 260px;">
+        <div class="itemBox" data-itemid="517973">
+            <div class="pic">
+                <a href="{{itemLink}}" target="_blank">
+                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                </a>
+            </div>
+            <div class="txt">
+                <a href="{{itemLink}}" target="_blank">
+                    <p class="SubTitle">{{itemSubTitle}}</p>
+                    <h3>{{itemName_50}}</h3>
+                    {{itemMarketPrice}}{{itemPrice}}
+                </a>
+                {{itemAddToSC}}
+            </div>
+        </div>
+    </div>
+    <div class="cubes small" style="top:140px; left:515px;">
+        <div class="itemBox" data-itemid="517760">
+            <div class="pic">
+                <a href="{{itemLink}}" target="_blank">
+                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                </a>
+            </div>
+            <div class="txt">
+                <a href="{{itemLink}}" target="_blank">
+                    <p class="SubTitle">{{itemSubTitle}}</p>
+                    <h3>{{itemName_50}}</h3>
+                    {{itemMarketPrice}}{{itemPrice}}
+                </a>
+                {{itemAddToSC}}
+            </div>
+        </div>
+    </div>
+    <div class="cubes small" style="top:140px; right:25px;">
+        <div class="itemBox" data-itemid="495425">
+            <div class="pic">
+                <a href="{{itemLink}}" target="_blank">
+                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                </a>
+            </div>
+            <div class="txt">
+                <a href="{{itemLink}}" target="_blank">
+                    <p class="SubTitle">{{itemSubTitle}}</p>
+                    <h3>{{itemName_50}}</h3>
+                    {{itemMarketPrice}}{{itemPrice}}
+                </a>
+                {{itemAddToSC}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
