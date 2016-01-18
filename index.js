@@ -35,6 +35,11 @@ router.get('/getData/:itemID',function(req,res){
     });
 });
 
+router.get('/votes',function(req,res){
+    res.sendfile(__dirname + '/app/votingAnayltics.html');
+
+});
+
 router.get('/events',function(req,res){
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

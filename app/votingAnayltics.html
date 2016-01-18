@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var $dataTotalIndexSource = "https://raw.githubusercontent.com/mark86092/cec-party-vote/master/%E4%B8%8D%E5%88%86%E5%8D%80%E7%AB%8B%E5%A7%94%E8%B3%87%E6%96%99.json";
+				var $dataSource = "https://raw.githubusercontent.com/tony1223/crawl2016votes/master/outputs/votes_all.json";
+
+				var dataProcess = {
+					getData: function(dataSource){
+						var dataReturn = $.ajax({
+							url: dataSource,
+							dataType: 'json',
+							async: false
+						});
+						return dataReturn.responseJSON;
+					},
+					indexProcess: function(jdata){
+						$("body").append("<ul class='voteList'></ul><div class='zones'></div>");
+
+						var content = $(".voteList");
+						var zone = [];
+						$.each(jdata,function(key,value){
+					        var city = jdata[key].name;
+					        var zoneData = jdata[key].nodes;
+					        content.append("<li><h2>"+city+"</h2></li>");
+
+					        zoneDataProcess(zoneData, key);
+					    });
+
+
+						function zoneDataProcess(zdata, index){
+						    var zone = $(".zones");
+						    var data = [];
+						    zone.append("<div class='zoneShow' style='display: none;'></div>");
+						    data.push(zdata);
+
+							$.each(data, function(key,value){
+						      var zoneData = data[0];
+
+						      for(i=0; i < zoneData.length; i++){
+						        var zoneName = zoneData[i].name;
+								var PartData = zoneData[i].data;
+								var area = $(".zoneShow").eq(index);
+								area.append("<h3>"+zoneName+"</h3>\
+								<div class='partData partZone_"+i+"'></div>");
+								partDataProcess(PartData,index,i);
+						      }
+						    });
+						}
+
+						//partData process
+						function partDataProcess(data,mainIndex,secIndex){
+							var area = $(".zoneShow").eq(mainIndex).find(".partData").eq(secIndex);
+							var votePercent = [];
+							for(j = 0; j < data.length; j++){
+								var partName = data[j]["政黨"];
+								var percent = data[j]["得票率%"];
+								votePercent.push({partName,percent});
+							}
+
+							dataProcess.d3(votePercent,mainIndex,secIndex);
+						}
+					},
+					d3: function(jdata, index1, index2){
+						d3.selection.prototype.eq = function(index) { return d3.select(this[0][index]); }
+
+						var d3Databind = d3.selectAll("div.zoneShow").eq(index1)
+										 .selectAll("div.partData").eq(index2);
+										//  .selectAll("p")
+										//  .data(jdata);
+
+						var w = 400,
+							h = 400;
+
+						svg = d3Databind.append("svg").attr('width',w).attr('height', h);
+
+						//color sttings
+						var color = d3.scale.category20();
+						var pie = d3.layout.pie()
+								  	.sort(null)
+								  	.value(function(d) {return d.percent; });
+
+						var outerRadius = h/2,
+							innerRadius = h/4;
+
+						var arc = d3.svg.arc()
+									    .innerRadius(innerRadius)
+									    .outerRadius(outerRadius);
+
+						var arcs = svg.selectAll('g.arc')
+								      .data(pie(jdata)) //將資料放入pie
+								      .enter()
+								      .append('g') //塞好'g'
+								      .attr('class', 'arc') //準備好Class
+									  .attr('transform', 'translate(' + outerRadius + ',' + outerRadius + ')');
+
+						arcs.append('path')
+							.attr('fill', function(d,i){
+							  return color(i); //招喚前面的color function
+							})
+							.attr('d', arc);
+
+						arcs.append('text')
+							.attr('transform', function(d){
+								return 'translate('+ arc.centroid(d) +')';
+								//centroid()任何形狀的中心點
+							})
+							.attr('text-anchor', 'middle')
+							.text(function(d){
+								return d.data.partName; //在每個形狀的中央插入文字  
+							})
+							.attr('fill', 'black');
+						// d3Databind.exit().remove();
+						//
+						// div_set.html(function(d, i){
+						// 	var orgPercent = Math.ceil(d["percent"] * 100) / 100;
+						// 	return "<span class='partName'>"+d["partName"] +"</span><span class='percent'><i>"+orgPercent+"%</i></span>";
+						// });
+						//
+						// div_set.style("margin", "5px");
+						//
+						// div_set.select("span.percent").style("width", function(d,i) {
+						// 	return (d["percent"] * 10)+"px";
+						// });
+						// div_set.select("span.percent").style("background", function(d, i){
+						// 	return color(i);
+						// });
+					},
+					//effects
+					effects: function(){
+						$(".zones").find(".zoneShow").eq(0).show();
+						$(".voteList li").eq(0).addClass("current");
+
+						$(".voteList li").each(function(){
+							$(this).click(function(){
+								var _index = $(this).index();
+								$(this).addClass("current").siblings("li").removeClass("current");
+								$(".zoneShow").hide();
+								$(".zones").find(".zoneShow").eq(_index).fadeIn();
+							});
+						});
+					}
+				};
+
+				var rolData = dataProcess.getData($dataTotalIndexSource);
+				// var DetailData = dataProcess.getData($dataSource);
+				dataProcess.indexProcess(rolData);
+				dataProcess.effects();
+
+
+			});
+		</script>
+		<style>
+			html, body, h2, ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			.voteList {
+				position: fixed;
+				z-index: 5;
+				display: block;
+				width: 100%;
+				height: 50px;
+				background: rgba(0,0,0, .8);
+			}
+
+			.voteList li {
+				float:left;
+				padding: 0 3px;
+			}
+
+			.voteList li.current > h2 {
+				color: #aaaa39;
+			}
+
+			.voteList li h2 {
+				line-height: 50px;
+				font-size: 15px;
+				font-weight: lighter;
+				color: #fff;
+				cursor: pointer;
+			}
+
+			.zones {
+				position: absolute;
+				z-index: 0;
+				left: 0;
+				margin-top: 55px;
+			}
+
+			.zones p {
+				display: block;
+				margin:0;
+				padding: 0;
+				height: 20px;
+			}
+
+			span {
+				font-size: 12px;
+				line-height: 20px;
+			}
+
+			span.partName {
+				position: relative;
+				top:0;
+				display: inline-block;
+				width: 130px;
+				height: 20px;
+			}
+
+			span.percent {
+				position: relative;
+				display: inline-block;
+				height: 20px;
+				padding: 0 20px;
+
+				font-family: arial;
+			}
+
+			span.percent > i {
+				position: absolute;
+				left: 3px;
+				top: 0;
+
+				font-size: 11px;
+				color: #333;
+			}
+
+		</style>
+	</head>
+	<body>
+
+	</body>
+</html>
