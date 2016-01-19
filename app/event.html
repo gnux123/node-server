@@ -440,7 +440,7 @@
                     return postData.responseJSON;
                 },
                 collectItemsID: function(){
-                    $(".itemBox").each(function(){
+                    itemSingle.target.each(function(){
                         var _ID = $(this).attr("data-itemid");
                         itemSingle.itemsID.push(_ID);
                     });
@@ -482,7 +482,8 @@
     						var $var = value.split("_")[0];
     						switch($var) {
     							case "itemImgUrl":
-    								return ctemp.replace(tempStr,dataShow["ImgUrlList"][0]);
+                                    var pic = value.split("_")[1] - 1;
+    								return ctemp.replace(tempStr,dataShow["ImgUrlList"][pic]);
     							break;
     							case "itemLink":
     								return ctemp.replace(tempStr,"https://secure.newegg.com.tw/item?itemid="+nowId);
