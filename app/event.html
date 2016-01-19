@@ -3,6 +3,425 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%;min-width:1024px}.wrapper .mainPadding{margin:0 auto;margin-bottom:0px}a img{border:0}a.links{position:absolute;display:block}.wrapper{background-position:center 60px;background-repeat:no-repeat;overflow-x:hidden}.content{position:relative;width:100%;height:auto}.content>div{margin:0 auto;width:100%;min-width:1024px;max-width:1920px;overflow:hidden}.mainFocus,.focusContent{position:relative}.mainFocus{background-position:center -175px;background-repeat:no-repeat}.focusContent{margin:0 auto;height:100%;width:1024px}.prods{position:relative;margin:0 auto;z-index:5 \9}.sp_content{width:100%;height:auto}.sp_content>div{position:relative;width:1024px;min-width:1024px;height:100%;margin:0 auto}.tables{position:relative;z-index:-1 \9;width:100%;height:100%}.tables .cubes{position:absolute}.tables .cubes .itemBox{position:relative;z-index:5 \9}.tables .cubes .itemBox a{position:relative;z-index:0 \9}.tables:after,.tables .cubes .itemBox:after{content:"";display:table;clear:both}.itemBox,.itemBox .pic,.itemBox .pic img{position:relative}.itemBox .pic,.itemBox .pic img{z-index:-1 \9}.itemBox .pic{position:relative;display:block;margin:0 auto;overflow:hidden}.itemBox .pic a{position:absolute;display:block;width:100%;text-align:center;vertical-align:middle}.itemBox .pic a img{max-width:100%}.itemBox .txt{position:absolute}.itemBox .txt a{text-decoration:none}.itemBox .txt a:after{content:"";display:table;clear:both}.itemBox .txt p,.itemBox .txt h3,.itemBox .txt span{position:absolute;overflow:hidden}.itemBox .txt p,.itemBox .txt h3{width:100%}.itemBox .txt h3{color:#000;font-size:16px;letter-spacing:1px}.itemBox .txt span{display:inline-block;width:auto;font-family:arial}.itemBox .txt span.price>span,.itemBox .txt span.marketPrice>span{position:relative;display:inline-block;width:auto;margin-right:2px;font-size:13px;line-height:12px}.itemBox .txt span.price{height:50px;font-size:28px;line-height:50px}.itemBox .txt span.marketPrice{font-size:16px;color:#666;text-decoration:line-through}.itemBox .buyNow{position:absolute;display:block;text-align:center;cursor:pointer}.itemBox .buyNow.arrows:before{position:absolute;display:block;content:""}.itemBox .addCart{position:absolute;z-index:2 \9;overflow:hidden;background-repeat:no-repeat}.notice{position:relative;width:100%;min-width:1024px;height:auto;padding:60px 0}.noticeWrap{margin:0 auto;width:1024px;min-width:1024px;height:auto}.noticeWrap p a{text-decoration:none}.noticeWrap ol{margin-left:0;padding-left:25px}.noticeWrap ol li{margin:5px 0;line-height:20px;letter-spacing:0.5px}.itemBox,.itemBox .pic,.itemBox .pic a{width:100%;height:100%}.itemBox .txt{bottom:0;width:96%;height:21%;padding:2%}.itemBox .txt a{display:block;width:100%;height:100%}.itemBox .txt p,.itemBox .txt h3,.itemBox .txt span{display:block;margin:0;padding:0}.itemBox .txt p{display:block;width:100%;height:25px;font-size:18px;letter-spacing:1px;line-height:25px}.itemBox .buyNow.arrows:before{z-index:1;right:5px;bottom:9px;width:0;height:0;border-style:solid;border-width:5px 0 5px 10px}.itemBox .addCart{left:0;top:0;width:70px;height:0;padding-top:70px}.noticeWrap h2{font-size:18px}.noticeWrap p{font-size:16px;font-weight:lighter;letter-spacing:1px;line-height:30px}.mode01 .noticeWrap{width:1200px;padding-bottom:30px}.mode01 .noticeWrap h2{position:absolute;left:0;top:0;margin:0;display:block;width:100%;height:50px;font-size:18px;font-weight:bolder;letter-spacing:4px;line-height:50px;text-align:center}.mode01 .noticeWrap p{margin-top:60px}.mode02{padding:60px 0}.mode02 .noticeWrap{width:1280px}.mode02 .noticeWrap h2{margin:0;padding:10px;display:inline-block;font-weight:lighter;letter-spacing:4px}@media screen and (min-width: 0px) and (max-width: 1024px){.focusContent,.prods,.noticeWrap{width:1024px}}@media screen and (min-width: 1025px) and (max-width: 1280px){.footer{margin:0;width:100%}}
+
+        a,
+        a:hover,
+        a:before,
+        a:after {
+            -webkit-transition-duration: inherit;
+                    transition-duration: inherit;
+        }
+
+        .wrapper,
+        .mainFocus {
+            background-image: url(/img/Activity/20160115_aNewLook/mainFocus.jpg); /*需放入刊頭主視覺*/
+        }
+
+        .content {
+            background-color: #fff;
+        }
+
+        /*如果沒有最上方橫幅AD需使用此設定
+        .wrapper { background-position: center top; }
+        */
+
+        /* 刊頭主視覺外框高度 */
+        .mainFocus {
+            height:506px; /* 原始圖像高度減掉175px */
+            background-color: #fff;
+        }
+
+        /* 刊頭主視覺內框寬度設定 */
+        .focusContent { width: 1280px; }
+
+        /*.focusContent:hover:before {
+            position: fixed;
+            z-index: 10;
+            left: 50%;
+            top: 50%;
+            content: "";
+            display:block;
+            width: 620px;
+            height: 500px;
+            margin: -250px 0 0 -310px;
+            background: url(20151116_blackfriday/wtbf.png) center no-repeat;
+        }*/
+
+
+        .navs {
+            width: 100%;
+            height: 85px;
+            background: url(/img/Activity/20160115_aNewLook/navs_bg.gif) top repeat-x;
+        }
+
+        .navs > .navsContent {
+            position: relative;
+            margin: 0 auto;
+            width: 1028px;
+            height: 85px;
+            overflow: hidden;
+            background: url(/img/Activity/20160115_aNewLook/navContent.gif) center no-repeat;
+            clear: both;
+        }
+
+        .navs > .navsContent:before {
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            top:15px;
+            display: block;
+            content: "";
+            width: 8px;
+            height: 55px;
+            overflow: hidden;
+            background: url(/img/Activity/20160115_aNewLook/link_bg.gif) top no-repeat;
+            background-position: 0 0;
+        }
+
+        .navs.fixed {
+            position: fixed;
+            z-index: 99;
+            top:0;
+            left:0;
+
+            box-shadow: 0 0 5px rgba(0,0,0, .5);
+        }
+
+        .navs.fixed > .navsContent {
+            background: transparent;
+        }
+
+        .navs > .navsContent a {
+            position: relative;
+            float:left;
+            display: block;
+            width: 257px;
+            height: 55px;
+            margin: 15px 0;
+            overflow: hidden;
+            background-image: url(/img/Activity/20160115_aNewLook/link_bg.gif);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+
+            text-align: center;
+            text-decoration: none;
+            font-weight:700;
+            font-size: 25px;
+            line-height: 55px;
+            color: #93161b;
+
+        }
+
+
+        .navs > .navsContent a:hover {
+            background-position: 0 -55px;
+
+            color: #e8cf78;
+        }
+
+
+        a.links.linkEvents {
+            position: absolute;
+            left: 115px;
+            top: 320px;
+            width: 155px;
+            height: 160px;
+            background-image: url(/img/Activity/20160115_aNewLook/eventsLink.png);
+            background-position: 0 0;
+            background-repeat: no-repeat;
+        }
+
+        a.links.linkEvents:hover {
+            background-position: 0 -160px;
+        }
+
+
+        /* ##各分類主題內框寬度設定 */
+        .prods {
+            width: 1026px; /* 各分類主題內框共用寬度設定 */
+            height: 100%;
+        }
+
+        .prods:before {
+            position: absolute;
+            z-index: 2;
+            top: 1;
+            content: "";
+            display: none;
+        }
+
+        .content > div.mainProds01 {
+            height: 3238px;
+            background: url(/img/Activity/20160115_aNewLook/main_01.jpg) center no-repeat;
+        }
+
+        .content > div.mainProds02 {
+            height: 2164px;
+            background: url(/img/Activity/20160115_aNewLook/main_02.jpg) center no-repeat;
+        }
+
+        .content > div.mainProds03 {
+            height: 745px;
+            background: url(/img/Activity/20160115_aNewLook/main_03.jpg) top center no-repeat;
+        }
+
+        .content > div.mainProds04 {
+            height: 3065px;
+            background: url(/img/Activity/20160115_aNewLook/main_04.jpg) center no-repeat;
+        }
+
+
+        /* tables settings */
+        .content > div.mainProds00 .tables { top: 205px; }
+        .content > div.mainProds01 .tables { top: 165px; }
+        .content > div.mainProds02 .tables { top: 165px; }
+        .content > div.mainProds03 .tables { top: 195px; }
+        .content > div.mainProds04 .tables { top: 215px; }
+        .content > div.mainProds .tables { height: 690px; }
+
+        .tables {
+            top: 30px;
+            z-index: 1;
+            margin: 0 auto;
+            width: 1040px;
+        }
+
+        .tables .cubes {
+            z-index: 0;
+            background: #fff;
+        }
+
+        .tables .cubes .itemBox { position: absolute; }
+
+        .cubes .itemBox .buyNow {
+            position: absolute;
+            z-index:1;
+            top:0;
+            left:0;
+            display:block;
+            content: "";
+            width: 70px;
+            height: 0;
+            padding-top:70px;
+            overflow:hidden;
+            background-repeat: no-repeat;
+            cursor:pointer;
+        }
+
+        .tables .cubes .itemBox a {
+            position: relative;
+            z-index: 0;
+        }
+
+        .content > div.mainProds .tables .small {
+          width: 245px;
+          height: 460px;
+        }
+
+        .content > div.mainProds .tables .small .itemBox > .txt {
+          width: 225px;
+        }
+
+
+        .content > div.cates .tables .small {
+          width: 245px;
+          height: 460px;
+        }
+
+        .content > div.cates .tables .small .itemBox > .txt {
+          width: 178px;
+        }
+
+        .tables .small .itemBox {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* itembox pic settings */
+        .tables .small .itemBox .pic {
+            margin: 10px;
+            width: 225px;
+            height: 225px;
+        }
+
+
+
+        /* itemBox settings */
+        .itemBox > .txt span.marketPrice {
+            left: 0;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        .itemBox > .txt span.marketPrice > span {
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+
+        .small.justwait:before,
+        .small.soldout:before,
+        .small.justwait:after,
+        .small.soldout:after {
+            position: absolute;
+            display: block;
+            content: "";
+        }
+
+        .small.justwait:before,
+        .small.soldout:before {
+            z-index: 90;
+            width: 100%;
+            height: 100%;
+        }
+
+        .small.justwait:before { background: url(/img/Activity/20160115_aNewLook/justwait.png) center no-repeat; }
+
+        .small.soldout:before { background: rgba(0,0,0, .8); }
+
+
+
+        .small.soldout:after {
+            z-index: 91;
+            left: 50%;
+            top: 50%;
+            width: 188px;
+            height: 185px;
+            margin: -92.5px 0 0 -94px;
+        }
+
+        .small.soldout:after { background: url(/img/Activity/20160115_aNewLook/soldout.png) center no-repeat; }
+
+
+        .small .itemBox > .txt p,
+        .small .itemBox > .txt h3 {
+            position: relative;
+            width: 100%;
+        }
+
+        .small .itemBox > .txt p {
+            position: relative;
+            height: 35px;
+            border-top: 1px solid #ff0000;
+
+            font-size: 15px;
+            line-height: 35px;
+            color: #ff0000;
+        }
+
+        .small .itemBox > .txt p,
+        .longs .itemBox > .txt p {
+            font-size: 16px;
+        }
+
+        .longs .itemBox > .txt p {
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .small .itemBox > .txt h3,
+        .longs .itemBox > .txt h3 {
+            margin-top: 10px;
+            height: 60px;
+            font-size: 16px;
+            font-weight: lighter;
+            line-height: 20px;
+        }
+
+        .small .itemBox > .txt .price {
+            margin-top: 40px;
+
+            line-height: 45px;
+            font-size: 40px;
+            color: #ff0000;
+        }
+
+
+        .small .itemBox > .txt .price > span {
+            display: block;
+        }
+
+        .longs .itemBox > .txt span.price {
+            bottom: -5px;
+        }
+        .small .itemBox > .txt span.price > span {
+            font-size: 14px;
+        }
+
+        .wides .itemBox .txt .price {
+            font-size: 40px;
+            line-height: 100px;
+
+        }
+
+
+        .small .itemBox .buyNow {
+            position: absolute;
+            top: auto;
+            left: auto;
+            right: 0px;
+            bottom: 5px;
+            height: 30px;
+            padding: 0 10px;
+            overflow: inherit;
+            background: #fff;
+            border: 1px solid #6d6e71;
+
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 30px;
+            text-align: center;
+            color: #6d6e71;
+
+        }
+
+
+        .itemBox > .txt {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            height: 205px;
+            padding: 0;
+            margin: 0 10px;
+        }
+
+
+        /* notice settings */
+        .notice,
+        .notice a {
+            background: url(/img/Activity/20160115_aNewLook/notice_bg.jpg) center repeat-y;
+
+            color: #000;
+        }
+
+        .notice h2 {
+
+            color:#000;
+            margin: 20px 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .notice ol {
+            list-style: decimal;
+        }
+
+
+        /* resposive web design */
+        @media screen and (min-width:0px) and (max-width: 1260px) {
+            .focusContent,
+            .prods,
+            .noticeWrap { width:1040px; }
+
+            a.links.linkEvents { left: 10px; }
+
+            .tables { z-index:1; width: 1040px; }
+        }
+
+
+    </style>
     <script src="https://code.jquery.com/jquery-git2.min.js" charset="utf-8"></script>
     <script>
         $(function(){
@@ -12,7 +431,6 @@
                 itemsID: [],
                 itemsDataCollect: [],
                 getData: function(itemID){
-                    // var dataTemp = [];
                     var postData = $.ajax({
                         url: itemSingle.dataUri+"/getData/"+itemID,
                         dataType: "json",
@@ -33,116 +451,1196 @@
                     var dataTemp = [];
                     $.each(itemSingle.itemsID, function(key,value){
                         var data = itemSingle.getData(value);
-                        dataTemp.push(data);
+                        dataTemp[value] = data;
                     });
 
                     itemSingle.itemsDataCollect.push({results: dataTemp});
                     return itemSingle.itemsDataCollect;
                 },
                 dataProcess: function(array){
-                    // itemSingle.target.each(function(index){
-                    //     var content = $(this).html(),
-                    //         intIdx = 0;
-                    //     var content = '', temp = '', pictemp = '';
-                    //
-                    //     while (content.indexOf("{{") != -1) {
-                    //         intStart = content.indexOf("{{");
-                    //
-                    //         if(intStart > -1){
-                    //             temp = content.substr(intStart + 2);
-                    //             intEnd = temp.indexOf('}}');
-                    //             console.log(intEnd);
-                    //             var $string = temp.substr(0, intEnd);
-                    //
-                    //             console.log($string);
-                    //
-                    //             // intIdx = intEnd + 2;
-                    //             // console.log(intIdx);
-                    //             // str = temp.substr(intIdx);
-                    //             // console.log(str);
-                    //         }
-                    //     }
-                    // });
+                    itemSingle.target.each(function(index){
+                        var nowId = $(this).attr("data-itemid");
+                        var dataShow = array[nowId];
+                        var ctemp;
+    					var content = $(this).html();
+    					if (!ctemp){
+    						ctemp = content;
+    					}
+
+                        //get string value
+                        var regExPattern = /\{\{(.*?)\}\}/g;
+    					var regExStr = ctemp.match(regExPattern);
+
+    					for(i=0; i < regExStr.length; i++){
+    						regStr = regExStr[i].substr(2).replace("}}","");
+    						ctemp = dataBind(regStr,regExStr[i]);
+    						$(this).html(ctemp);
+    					}
+
+                        //data binding
+                        function dataBind(value, tempStr){
+    						var $var = value.split("_")[0];
+    						switch($var) {
+    							case "itemImgUrl":
+    								return ctemp.replace(tempStr,dataShow["ImgUrlList"][0]);
+    							break;
+    							case "itemLink":
+    								return ctemp.replace(tempStr,"https://secure.newegg.com.tw/item?itemid="+nowId);
+    							break;
+    							case "itemName":
+                                    var _docsLength = value.split("_")[1] - 3;
+                                    var nameString = dataShow["Name"].slice(0, _docsLength);
+                                    return ctemp.replace(tempStr, nameString+"...");
+    							break;
+                                case "itemSubTitle":
+                                    return ctemp.replace(tempStr,dataShow["Title"]);
+                                break;
+                                case "itemMarketPrice":
+                                    return ctemp.replace(tempStr,"<span class='marketPrice'><span>NTD</span>"+dataShow["Price"]+"</span>");
+                                break;
+                                case "itemPrice":
+                                    return ctemp.replace(tempStr,"<span class='price'><span>NTD</span>"+dataShow["PromotionPrice"]+"</span>");
+                                break;
+                                case "itemAddToSC":
+                                    return ctemp.replace(tempStr,"<div class='buyNow' onclick='netw().buyNow("+nowId+");window.open('/Cart');'>立即購買</div>");
+                                break;
+    						}
+    					}
+
+                    });
                 }
             };
 
             var dataLists = itemSingle.collectData(),
                 results = dataLists[0].results;
-
-            console.log(results);
-
-            itemSingle.dataProcess();
+            itemSingle.dataProcess(results);
         });
     </script>
 </head>
 
 <body>
-    <div class="cubes small" style="top:140px; left:5px;">
-        <div class="itemBox" data-itemid="511144">
-            <div class="pic">
-                <a href="{{itemLink}}" target="_blank">
-                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
-                </a>
-            </div>
-            <div class="txt">
-                <a href="{{itemLink}}" target="_blank">
-                    <p class="SubTitle">{{itemSubTitle}}</p>
-                    <h3>{{itemName_50}}</h3>
-                    {{itemMarketPrice}}{{itemPrice}}
-                </a>
-                {{itemAddToSC}}
+    <div class="content">
+        <div class="mainFocus">
+          <div class="focusContent">
+                <a class="links linkEvents" href="https://secure.newegg.com.tw/activity/20151231_ChineseNewYear" target="_blank"></a>
+          </div>
+        </div>
+        <div class="navs">
+            <div class="navsContent">
+                <a href="javascript:void(0);" class="links link01">年前SUPER SALE</a>
+                <a href="javascript:void(0);" class="links link02">館長推薦</a>
+                <a href="javascript:void(0);" class="links link03">清掃懶人包</a>
+                <a href="javascript:void(0);" class="links link04">輕鬆大掃除</a>
             </div>
         </div>
-    </div>
-    <div class="cubes small" style="top:140px; left: 260px;">
-        <div class="itemBox" data-itemid="517973">
-            <div class="pic">
-                <a href="{{itemLink}}" target="_blank">
-                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
-                </a>
-            </div>
-            <div class="txt">
-                <a href="{{itemLink}}" target="_blank">
-                    <p class="SubTitle">{{itemSubTitle}}</p>
-                    <h3>{{itemName_50}}</h3>
-                    {{itemMarketPrice}}{{itemPrice}}
-                </a>
-                {{itemAddToSC}}
+        <div id="mainProds01" class="mainProds mainProds01">
+            <div class="prods prods01">
+                <div class="tables">
+                    <div class="cubes small" style="top:140px; left:5px;">
+                        <div class="itemBox" data-itemid="511144">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:140px; left: 260px;">
+                        <div class="itemBox" data-itemid="517973">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:140px; left:515px;">
+                        <div class="itemBox" data-itemid="517760">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:140px; right:25px;">
+                        <div class="itemBox" data-itemid="495425">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small justwait" style="top:740px; left:5px; ">
+                        <div class="itemBox" data-itemid="483185">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:740px; left: 260px; ">
+                        <div class="itemBox" data-itemid="518606">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:740px; left: 515px; ">
+                        <div class="itemBox" data-itemid="480377">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:740px; right: 25px; ">
+                        <div class="itemBox" data-itemid="478633">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small justwait" style="top:1340px; left:5px; ">
+                        <div class="itemBox" data-itemid="518115">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1340px; left: 260px; ">
+                        <div class="itemBox" data-itemid="515097">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1340px; left: 515px; ">
+                        <div class="itemBox" data-itemid="497568">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1340px; right: 25px; ">
+                        <div class="itemBox" data-itemid="441967">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small justwait" style="top:1940px; left:5px; ">
+                        <div class="itemBox" data-itemid="476685">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1940px; left: 260px; ">
+                        <div class="itemBox" data-itemid="510532">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1940px; left: 515px; ">
+                        <div class="itemBox" data-itemid="477949">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:1940px; right: 25px; ">
+                        <div class="itemBox" data-itemid="514537">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small justwait" style="top:2540px; left:5px; ">
+                        <div class="itemBox" data-itemid="517636">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:2540px; left: 260px; ">
+                        <div class="itemBox" data-itemid="468970">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:2540px; left: 515px; ">
+                        <div class="itemBox" data-itemid="516385">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small justwait" style="top:2540px; right: 25px; ">
+                        <div class="itemBox" data-itemid="514814">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
-    </div>
-    <div class="cubes small" style="top:140px; left:515px;">
-        <div class="itemBox" data-itemid="517760">
-            <div class="pic">
-                <a href="{{itemLink}}" target="_blank">
-                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
-                </a>
-            </div>
-            <div class="txt">
-                <a href="{{itemLink}}" target="_blank">
-                    <p class="SubTitle">{{itemSubTitle}}</p>
-                    <h3>{{itemName_50}}</h3>
-                    {{itemMarketPrice}}{{itemPrice}}
-                </a>
-                {{itemAddToSC}}
+
+        <div id="mainProds02" class="mainProds mainProds02">
+            <div class="prods prods02">
+                <div class="tables">
+                    <div class="cubes small" style="top:50px; left:5px; ">
+                        <div class="itemBox" data-itemid="518029">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:50px; left: 260px; ">
+                        <div class="itemBox" data-itemid="494278">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:50px; left: 515px; ">
+                        <div class="itemBox" data-itemid="518030">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:50px; right: 25px; ">
+                        <div class="itemBox" data-itemid="518028">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="cubes small" style="top:520px; left:5px; ">
+                        <div class="itemBox" data-itemid="492307">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:520px; left: 260px; ">
+                        <div class="itemBox" data-itemid="517975">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:520px; left: 515px; ">
+                        <div class="itemBox" data-itemid="517092">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:520px; right: 25px; ">
+                        <div class="itemBox" data-itemid="49684">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:990px; left:5px; ">
+                        <div class="itemBox" data-itemid="517858">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:990px; left: 260px; ">
+                        <div class="itemBox" data-itemid="504043">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:990px; left: 515px; ">
+                        <div class="itemBox" data-itemid="517967">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:990px; right: 25px; ">
+                        <div class="itemBox" data-itemid="514213">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:1460px; left:5px; ">
+                        <div class="itemBox" data-itemid="469229">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:1460px; left: 260px; ">
+                        <div class="itemBox" data-itemid="517632">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:1460px; left: 515px; ">
+                        <div class="itemBox" data-itemid="517734">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style="top:1460px; right: 25px; ">
+                        <div class="itemBox" data-itemid="512739">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-    <div class="cubes small" style="top:140px; right:25px;">
-        <div class="itemBox" data-itemid="495425">
-            <div class="pic">
-                <a href="{{itemLink}}" target="_blank">
-                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
-                </a>
+
+        <div id="mainProds03" class="mainProds mainProds03">
+            <div class="prods prods03">
+                <div class="tables">
+                    <div class="cubes small" style="top:10px; left:5px; ">
+                        <div class="itemBox" data-itemid="516199">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cubes small" style="top:10px; left: 260px; ">
+                        <div class="itemBox" data-itemid="515981">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cubes small" style="top:10px; left: 515px; ">
+                        <div class="itemBox" data-itemid="516200">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cubes small" style="top:10px; right: 25px; ">
+                        <div class="itemBox" data-itemid="516235">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="txt">
-                <a href="{{itemLink}}" target="_blank">
-                    <p class="SubTitle">{{itemSubTitle}}</p>
-                    <h3>{{itemName_50}}</h3>
-                    {{itemMarketPrice}}{{itemPrice}}
-                </a>
-                {{itemAddToSC}}
+        </div>
+
+        <div id="mainProds04" class="mainProds mainProds04">
+            <div class="prods prods04">
+                <div class="tables">
+                    <div class="cubes small" style="top:35px; left:5px;">
+                        <div class="itemBox" data-itemid="516177">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:35px; left: 260px;">
+                        <div class="itemBox" data-itemid="112244">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:35px; left:515px;">
+                        <div class="itemBox" data-itemid="450690">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:35px; right:25px;">
+                        <div class="itemBox" data-itemid="132339">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:595px; left:5px;">
+                        <div class="itemBox" data-itemid="511508">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:595px; left: 260px;">
+                        <div class="itemBox" data-itemid="483285">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:595px; left:515px;">
+                        <div class="itemBox" data-itemid="511137">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:595px; right:25px;">
+                        <div class="itemBox" data-itemid="431434">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:1145px; left:5px;">
+                        <div class="itemBox" data-itemid="126898">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1145px; left: 260px;">
+                        <div class="itemBox" data-itemid="110127">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1145px; left:515px;">
+                        <div class="itemBox" data-itemid="449886">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1145px; right:25px;">
+                        <div class="itemBox" data-itemid="475202">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:1700px; left:5px;">
+                        <div class="itemBox" data-itemid="473846">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1700px; left: 260px;">
+                        <div class="itemBox" data-itemid="474116">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1700px; left:515px;">
+                        <div class="itemBox" data-itemid="474081">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:1700px; right:25px;">
+                        <div class="itemBox" data-itemid="474165">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="cubes small" style="top:2250px; left:5px;">
+                        <div class="itemBox" data-itemid="119231">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:2250px; left: 260px;">
+                        <div class="itemBox" data-itemid="516234">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:2250px; left:515px;">
+                        <div class="itemBox" data-itemid="104840">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cubes small" style=" top:2250px; right:25px;">
+                        <div class="itemBox" data-itemid="484697">
+                            <div class="pic">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
+                                </a>
+                            </div>
+                            <div class="txt">
+                                <a href="{{itemLink}}" target="_blank">
+                                    <p class="SubTitle">{{itemSubTitle}}</p>
+                                    <h3>{{itemName_50}}</h3>
+                                    {{itemMarketPrice}}{{itemPrice}}
+                                </a>
+                                {{itemAddToSC}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+        </div>
+
+
+
+        <div class="notice">
+          <div class="noticeWrap">
+            <h2>活動注意事項</h2>
+            <ol>
+                <li>
+                    <span style="font-weight:bold;">滿額折期間(依活動頁刊頭為主)，1/15 - 1/31全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元，1/25 - 1/31全站結帳滿10,000(含)以上可參加滿額現折1,200元(部分商品除外)。</span><br/>
+                    滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。
+                </li>
+                <li>除外商品：部分商品排除，不參與滿額折活動。</li>
+                <li>折價券僅限原註冊會員，依「折價券使用辦法」於有效期限內（逾期失效，恕不補發），在新蛋全球生活網消費時使用，恕無法轉讓或合併，部分活動或商品無法折抵使用，亦無法折換現金、找零或交換其他商品及折換其他贈品，且無法抵扣物流、安裝、服務、稅賦等費用。</li>
+                <li>折價券之使用方式與注意事項，請參閱「我的帳戶><a href="/MyAccount/Coupon" target="_blank">我的折價券</a>」使用辦法。</li>
+                <li>專案活動及優惠方案（如其他折扣、滿額折、折價券）不可合併使用，會員若同時擁有兩種優惠，只能擇一進行折抵。（如該活動已有滿額折，則折價券無法使用）</li>
+                <li>參加消費滿額折之商品，若事後取消訂單或辦理退貨，須將所有參加滿額折商品一併退貨，並僅會退還您實際支付的金額。折價券折抵部分不再另外開立發票，開立發票金額以該訂單「實際支付金額」計算。</li>
+                <li>商品顏色因電腦螢幕之設定會略有不同，以實際出貨商品顏色為準。</li>
+                <li>商品數量有限，售完為止。</li>
+                <li>新蛋全球生活網將保留隨時變更、修改與解釋或終止本「折價券使用辦法」之權利，若有異動及修改，將在本網站上公布，恕不另行個別通知。</li>
+                <li>若您有任何疑問，歡迎<a href="mailto:service@newegg.com.tw" target="_self">來信</a>，我們將於1～2日內（不含例假日）以E-mail回覆您，或請於上班時間（8:30～17:30）來電（02-8170-6025）。</li>
+            </ol>
+          </div>
         </div>
     </div>
 </body>
