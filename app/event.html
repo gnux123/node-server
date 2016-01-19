@@ -496,16 +496,21 @@
                                     return ctemp.replace(tempStr,dataShow["Title"]);
                                 break;
                                 case "itemMarketPrice":
-                                    return ctemp.replace(tempStr,"<span class='marketPrice'><span>NTD</span>"+dataShow["Price"]+"</span>");
+                                    return ctemp.replace(tempStr,"<span class='marketPrice'><span>NTD</span>"+numberWithCommas(dataShow["Price"])+"</span>");
                                 break;
                                 case "itemPrice":
-                                    return ctemp.replace(tempStr,"<span class='price'><span>NTD</span>"+dataShow["PromotionPrice"]+"</span>");
+                                    return ctemp.replace(tempStr,"<span class='price'><span>NTD</span>"+numberWithCommas(dataShow["PromotionPrice"])+"</span>");
                                 break;
                                 case "itemAddToSC":
                                     return ctemp.replace(tempStr,"<div class='buyNow' onclick='netw().buyNow("+nowId+");window.open('/Cart');'>立即購買</div>");
                                 break;
     						}
     					}
+
+                        //currency dots
+                        function numberWithCommas(x) {
+                            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        }
 
                     });
                 }
