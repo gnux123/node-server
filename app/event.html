@@ -431,31 +431,36 @@
                 itemsID: [],
                 itemsDataCollect: [],
                 getData: function(itemID){
-                    var postData = $.ajax({
+                    return $.ajax({
+                        async: true,
+                        cache: true,
                         url: itemSingle.dataUri+"/getData/"+itemID,
-                        dataType: "json",
-                        async: false
+                        datatype: 'json'
                     });
-
-                    return postData.responseJSON;
                 },
                 collectItemsID: function(){
                     itemSingle.target.each(function(){
                         var _ID = $(this).attr("data-itemid");
                         itemSingle.itemsID.push(_ID);
                     });
+
+                    return itemSingle.itemsID;
                 },
                 collectData: function(){
-                    itemSingle.collectItemsID();
+                    var collecIDS = itemSingle.collectItemsID();
 
-                    var dataTemp = [];
-                    $.each(itemSingle.itemsID, function(key,value){
-                        var data = itemSingle.getData(value);
-                        dataTemp[value] = data;
+                    var queus = [];
+
+                    $.each(collecIDS, function(key,value){
+                        queus.push(itemSingle.getData(value));
                     });
 
-                    itemSingle.itemsDataCollect.push({results: dataTemp});
-                    return itemSingle.itemsDataCollect;
+                    $.when.apply($,queus).then(function(data){
+                        for (var i = 0; i < arguments.length; i++) {
+                            itemSingle.itemsDataCollect[collecIDS[i]] = arguments[i][0];
+                        }
+                        itemSingle.dataProcess(itemSingle.itemsDataCollect);
+                    });
                 },
                 dataProcess: function(array){
                     itemSingle.target.each(function(index){
@@ -470,7 +475,7 @@
                         //get string value
                         var regExPattern = /\{\{(.*?)\}\}/g;
     					var regExStr = ctemp.match(regExPattern);
-
+                        // console.log(regExStr);
     					for(i=0; i < regExStr.length; i++){
     						regStr = regExStr[i].substr(2).replace("}}","");
     						ctemp = dataBind(regStr,regExStr[i]);
@@ -517,9 +522,8 @@
                 }
             };
 
-            var dataLists = itemSingle.collectData(),
-                results = dataLists[0].results;
-            itemSingle.dataProcess(results);
+            itemSingle.collectData();
+
         });
     </script>
 </head>
