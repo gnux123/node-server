@@ -439,25 +439,47 @@
                     });
                 },
                 collectItemsID: function(){
-                    itemSingle.target.each(function(){
-                        var _ID = $(this).attr("data-itemid");
-                        itemSingle.itemsID.push(_ID);
-                    });
+                    //[case1]
+                    var $length = Math.ceil(itemSingle.target.length / 10)*10;
+                    for(i=10; i<= $length; i=i+10){
+                        var temp = [];
+                        var x = (i/10) - 1;
+
+                        for(j=i-10; j<i; j++){
+                            var ids = itemSingle.target.eq(j).attr("data-itemid");
+                            if(!!ids){
+                                temp.push(ids);
+                            }
+                            if(temp != 0){
+                                itemSingle.itemsID[x] = temp;
+                            }
+                        }
+                    }
+
+                    //[case2]
+                    // itemSingle.target.each(function(){
+                    //     var _ID = $(this).attr("data-itemid");
+                    //     itemSingle.itemsID.push(_ID);
+                    // }).hide();
 
                     return itemSingle.itemsID;
                 },
                 collectData: function(){
-                    var collecIDS = itemSingle.collectItemsID();
-
+                    var collectIDS = itemSingle.collectItemsID();
+                    console.log(collectIDS);
                     var queus = [];
 
-                    $.each(collecIDS, function(key,value){
-                        queus.push(itemSingle.getData(value));
+                    $.each(collectIDS, function(key,value){
+                        //$.each(collectIDS[key],function(index, item){
+                            queus.push(itemSingle.getData(value));
+                        //});
                     });
 
-                    $.when.apply($,queus).then(function(data){
+                    $.when.apply($,queus).done(function(data){
+
                         for (var i = 0; i < arguments.length; i++) {
-                            itemSingle.itemsDataCollect[collecIDS[i]] = arguments[i][0];
+                            var jdata = arguments[i][0];
+                            itemSingle.itemsDataCollect[jdata.Id] = jdata;
                         }
                         itemSingle.dataProcess(itemSingle.itemsDataCollect);
                     });
@@ -494,9 +516,8 @@
     								return ctemp.replace(tempStr,"https://secure.newegg.com.tw/item?itemid="+nowId);
     							break;
     							case "itemName":
-                                    var _docsLength = value.split("_")[1] - 3;
-                                    var nameString = dataShow["Name"].slice(0, _docsLength);
-                                    return ctemp.replace(tempStr, nameString+"...");
+                                    var ItemNanme = textStringProcess(value, dataShow["Name"]);
+                                    return ctemp.replace(tempStr, ItemNanme);
     							break;
                                 case "itemSubTitle":
                                     return ctemp.replace(tempStr,dataShow["Title"]);
@@ -514,11 +535,18 @@
     					}
 
                         //currency dots
-                        function numberWithCommas(x) {
-                            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        function numberWithCommas(currency) {
+                            return currency.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         }
 
-                    });
+                        //textStringProcess
+                        function textStringProcess(obj,string) {
+                            var _docsLength = obj.split("_")[1] - 3;
+                            var nameString = string.slice(0, _docsLength);
+                            return nameString+"...";
+                        }
+
+                    }).fadeIn();
                 }
             };
 
@@ -1593,23 +1621,6 @@
                     </div>
                     <div class="cubes small" style=" top:2250px; left:515px;">
                         <div class="itemBox" data-itemid="104840">
-                            <div class="pic">
-                                <a href="{{itemLink}}" target="_blank">
-                                    <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
-                                </a>
-                            </div>
-                            <div class="txt">
-                                <a href="{{itemLink}}" target="_blank">
-                                    <p class="SubTitle">{{itemSubTitle}}</p>
-                                    <h3>{{itemName_50}}</h3>
-                                    {{itemMarketPrice}}{{itemPrice}}
-                                </a>
-                                {{itemAddToSC}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cubes small" style=" top:2250px; right:25px;">
-                        <div class="itemBox" data-itemid="484697">
                             <div class="pic">
                                 <a href="{{itemLink}}" target="_blank">
                                     <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
