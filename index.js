@@ -40,6 +40,11 @@ router.get('/votes',function(req,res){
 
 });
 
+router.get('/date',function(req,res){
+    res.sendfile(__dirname + '/app/aboutme.html');
+
+});
+
 router.get('/events',function(req,res){
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

@@ -16,7 +16,7 @@
 
         .wrapper,
         .mainFocus {
-            background-image: url(/img/Activity/20160115_aNewLook/mainFocus.jpg); /*需放入刊頭主視覺*/
+            background-image: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/mainFocus.jpg); /*需放入刊頭主視覺*/
         }
 
         .content {
@@ -53,7 +53,7 @@
         .navs {
             width: 100%;
             height: 85px;
-            background: url(/img/Activity/20160115_aNewLook/navs_bg.gif) top repeat-x;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/navs_bg.gif) top repeat-x;
         }
 
         .navs > .navsContent {
@@ -62,7 +62,7 @@
             width: 1028px;
             height: 85px;
             overflow: hidden;
-            background: url(/img/Activity/20160115_aNewLook/navContent.gif) center no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/navContent.gif) center no-repeat;
             clear: both;
         }
 
@@ -76,7 +76,7 @@
             width: 8px;
             height: 55px;
             overflow: hidden;
-            background: url(/img/Activity/20160115_aNewLook/link_bg.gif) top no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/link_bg.gif) top no-repeat;
             background-position: 0 0;
         }
 
@@ -101,7 +101,7 @@
             height: 55px;
             margin: 15px 0;
             overflow: hidden;
-            background-image: url(/img/Activity/20160115_aNewLook/link_bg.gif);
+            background-image: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/link_bg.gif);
             background-repeat: no-repeat;
             background-position: 0 0;
 
@@ -128,7 +128,7 @@
             top: 320px;
             width: 155px;
             height: 160px;
-            background-image: url(/img/Activity/20160115_aNewLook/eventsLink.png);
+            background-image: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/eventsLink.png);
             background-position: 0 0;
             background-repeat: no-repeat;
         }
@@ -154,22 +154,22 @@
 
         .content > div.mainProds01 {
             height: 3238px;
-            background: url(/img/Activity/20160115_aNewLook/main_01.jpg) center no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/main_01.jpg) center no-repeat;
         }
 
         .content > div.mainProds02 {
             height: 2164px;
-            background: url(/img/Activity/20160115_aNewLook/main_02.jpg) center no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/main_02.jpg) center no-repeat;
         }
 
         .content > div.mainProds03 {
             height: 745px;
-            background: url(/img/Activity/20160115_aNewLook/main_03.jpg) top center no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/main_03.jpg) top center no-repeat;
         }
 
         .content > div.mainProds04 {
             height: 3065px;
-            background: url(/img/Activity/20160115_aNewLook/main_04.jpg) center no-repeat;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/main_04.jpg) center no-repeat;
         }
 
 
@@ -277,7 +277,7 @@
             height: 100%;
         }
 
-        .small.justwait:before { background: url(/img/Activity/20160115_aNewLook/justwait.png) center no-repeat; }
+        .small.justwait:before { background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/justwait.png) center no-repeat; }
 
         .small.soldout:before { background: rgba(0,0,0, .8); }
 
@@ -292,7 +292,7 @@
             margin: -92.5px 0 0 -94px;
         }
 
-        .small.soldout:after { background: url(/img/Activity/20160115_aNewLook/soldout.png) center no-repeat; }
+        .small.soldout:after { background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/soldout.png) center no-repeat; }
 
 
         .small .itemBox > .txt p,
@@ -391,7 +391,7 @@
         /* notice settings */
         .notice,
         .notice a {
-            background: url(/img/Activity/20160115_aNewLook/notice_bg.jpg) center repeat-y;
+            background: url(http://www.newegg.com.tw/img/Activity/20160115_aNewLook/notice_bg.jpg) center repeat-y;
 
             color: #000;
         }
@@ -470,12 +470,12 @@
                     var queus = [];
 
                     $.each(collectIDS, function(key,value){
-                        //$.each(collectIDS[key],function(index, item){
-                            queus.push(itemSingle.getData(value));
-                        //});
+                        $.each(collectIDS[key],function(index, item){
+                            queus.push(itemSingle.getData(item));
+                        });
                     });
 
-                    $.when.apply($,queus).done(function(data){
+                    $.when.apply($,queus).then(function(data){
 
                         for (var i = 0; i < arguments.length; i++) {
                             var jdata = arguments[i][0];
