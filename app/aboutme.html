@@ -4,103 +4,137 @@
         <meta charset="utf-8">
         <title></title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.0.2/jquery.countdown.js" charset="utf-8"></script>
         <script type="text/javascript">
+        $(function(){
+            var DateArr = [
+                "2016/01/26 23:59:59",
+                "2016/01/27 00:00:00",
+                "2016/01/26 13:46:00"
+            ];
 
-        function serverTime(){
-            var xmlHttp;
-            try {
-                //FF, Opera, Safari, Chrome
-                xmlHttp = new XMLHttpRequest();
-            }
-            catch (err1) {
-                //IE
-                try {
-                    xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+            countdown(DateArr,function(key) {
+                $(".times"+key).text("times up"+key+"!!!");
+            });
+
+            function countdown(obj,callback){
+                var serverDate = serverTime();
+                var serverTime = getNewTime(serverDate);
+                var detectArr = $.isArray(obj);
+                var tempArr = [];
+                console.log(detectArr);
+
+                if(detectArr == true){
+                    for(i=0; i<obj.length; i++) {
+                        tempArr.push(obj[i]);
+                    }
+                }else{
+                    tempArr.push(obj);
                 }
-                catch (err2) {
+
+                $.each(tempArr, function(key,value) {
+
+                    $("body").append("<div class='times"+key+"'></div>");
+
+                    var timeout = [];
+                    var finalTimeSet = getNewTime(value);
+                    var spantTime = finalTimeSet - serverTime;
+
+                    timeout[key] = setTimeout(testTime, 1000);
+
+                    function testTime(){
+                        $(".times"+key).text(" ");
+                        if(spantTime <= 0){
+                            clearTimeout(timeout[key]);
+                            if(typeof callback == "function"){
+                                callback(key,value);
+                            }
+                        }else{
+                            spantTime = spantTime - 1000;
+                            $(".times"+key).text("Server time is: " + spantTime);
+                            setTimeout(testTime, 1000);
+                        }
+                    }
+
+                });
+
+
+                function serverTime(){
+                    var xmlHttp;
                     try {
-                        xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+                        xmlHttp = new XMLHttpRequest();
                     }
-                    catch (eerr3) {
-                        //AJAX not supported, use CPU time.
-                        alert("AJAX not supported");
+                    catch (err1) {
+                        try {
+                            xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+                        }
+                        catch (err2) {
+                            try {
+                                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+                            }
+                            catch (eerr3) {
+                                alert("AJAX not supported");
+                            }
+                        }
                     }
+                    xmlHttp.open('HEAD',window.location.href.toString(),false);
+                    xmlHttp.setRequestHeader("Content-Type", "text/html");
+                    xmlHttp.send('');
+                    var dates = new Date(xmlHttp.getResponseHeader("Date")).toString().split(" ");
+
+                    var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+                    var Mounth = dates[1].toUpperCase();
+                    switch(Mounth){
+                        case mounthArr[0]:
+                            Mounth = "01";
+                            break;
+                        case mounthArr[1]:
+                            Mounth = "02";
+                            break;
+                        case mounthArr[2]:
+                            Mounth = "03";
+                            break;
+                        case mounthArr[3]:
+                            Mounth = "04";
+                            break;
+                        case mounthArr[4]:
+                            Mounth = "05";
+                            break;
+                        case mounthArr[5]:
+                            Mounth = "06";
+                            break;
+                        case mounthArr[6]:
+                            Mounth = "07";
+                            break;
+                        case mounthArr[7]:
+                            Mounth = "08";
+                            break;
+                        case mounthArr[8]:
+                            Mounth = "09";
+                            break;
+                        case mounthArr[9]:
+                            Mounth = "10";
+                            break;
+                        case mounthArr[10]:
+                            Mounth = "11";
+                            break;
+                        case mounthArr[11]:
+                            Mounth = "12";
+                            break;
+                    }
+                    return dates[3]+"/"+Mounth+"/"+dates[2]+" "+dates[4];
+                }
+
+                function getNewTime(obj){
+                    var ts = (new Date(obj)).getTime() + 10*24*60*60*1000;
+                    return ts;
                 }
             }
-            xmlHttp.open('HEAD',window.location.href.toString(),false);
-            xmlHttp.setRequestHeader("Content-Type", "text/html");
-            xmlHttp.send('');
-            var dates = new Date(xmlHttp.getResponseHeader("Date")).toString().split(" ");
 
-            var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            var Mounth = dates[1].toUpperCase();
-            switch(Mounth){
-                case mounthArr[0]:
-                    Mounth = "01";
-                    break;
-                case mounthArr[1]:
-                    Mounth = "02";
-                    break;
-                case mounthArr[2]:
-                    Mounth = "03";
-                    break;
-                case mounthArr[3]:
-                    Mounth = "04";
-                    break;
-                case mounthArr[4]:
-                    Mounth = "05";
-                    break;
-                case mounthArr[5]:
-                    Mounth = "06";
-                    break;
-                case mounthArr[6]:
-                    Mounth = "07";
-                    break;
-                case mounthArr[7]:
-                    Mounth = "08";
-                    break;
-                case mounthArr[8]:
-                    Mounth = "09";
-                    break;
-                case mounthArr[9]:
-                    Mounth = "10";
-                    break;
-                case mounthArr[10]:
-                    Mounth = "11";
-                    break;
-                case mounthArr[11]:
-                    Mounth = "12";
-                    break;
-            }
-            return dates[3]+"/"+Mounth+"/"+dates[2]+" "+dates[4];
-        }
 
-        function getNewTime(obj){
-            var ts = (new Date(obj)).getTime() + 10*24*60*60*1000;
-            return ts;
-        }
-        var serverDate = serverTime();
-        var finalTime = "2015/01/25 16:51:00";
-        var date = new Date();
-
-        var serverTime = getNewTime(serverDate);
-        var finalTimeSet = getNewTime(finalTime);
-        var spantTime = finalTimeSet - serverTime;
-        if(spantTime <= 0){
-            document.write("times up!!!");
-        }else{
-            document.write("final time is: " + finalTimeSet);
-            document.write("Server time is: " + spantTime+"<br/>");
-            console.log(date.getMilliseconds()/1000);
-        }
-
-        // var localTime = new Date();
-        // document.write("Local machine time is: " + localTime + "<br>");
+        });
 
         </script>
     </head>
     <body>
-
     </body>
 </html>
