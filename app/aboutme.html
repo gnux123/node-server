@@ -3,17 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script type="text/javascript">
         $(function(){
             var DateArr = [
-                "2016/01/26 23:59:59",
-                "2016/01/27 00:00:00",
-                "2016/01/26 13:46:00"
+                "2016/01/26 16:39:00",
+                "2016/01/26 16:40:00",
+                "2016/01/26 16:41:00"
             ];
 
             countdown(DateArr,function(key) {
-                $(".times"+key).text("times up"+key+"!!!");
+                if(key == 0){
+                    $(".times"+key).text("times up!!!");
+                }else{
+                    alert(key);
+                }
             });
 
             function countdown(obj,callback){
@@ -21,7 +25,6 @@
                 var serverTime = getNewTime(serverDate);
                 var detectArr = $.isArray(obj);
                 var tempArr = [];
-                console.log(detectArr);
 
                 if(detectArr == true){
                     for(i=0; i<obj.length; i++) {
@@ -50,7 +53,6 @@
                             }
                         }else{
                             spantTime = spantTime - 1000;
-                            $(".times"+key).text("Server time is: " + spantTime);
                             setTimeout(testTime, 1000);
                         }
                     }
