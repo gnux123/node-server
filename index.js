@@ -11,10 +11,15 @@ var router = express.Router();
 
 var apiUri = "http://www.newegg.com.tw/";
 
+
+app.use(express.static(__dirname + '/app/public'));
+
+
 //client UI design
 router.get('/',function(req,res){
     res.sendfile(__dirname + '/app/index.html');
 });
+
 
 router.get('/getData/:itemID',function(req,res){
     res.setHeader('Content-Type', 'application/json');
@@ -41,7 +46,7 @@ router.get('/votes',function(req,res){
 });
 
 router.get('/date',function(req,res){
-    res.sendfile(__dirname + '/app/aboutme.html');
+    res.sendfile(__dirname + '/app/20160115_aNewLook3.html');
 
 });
 
