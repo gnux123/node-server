@@ -461,7 +461,7 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         padding:0 0 40px 0;
     }
 
-    .notice h2 {
+    .notice > h2 {
 
         color:#000;
         margin: 20px 0;
@@ -471,6 +471,23 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 
     .notice ol {
         list-style: decimal;
+    }
+
+    .noticeWrap > h2 {
+        font-size: 20px;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .noticeWrap > p {
+        margin: 0;
+        padding:0;
+        letter-spacing: inherit;
+        line-height: 20px;
+    }
+
+    .noticeWrap > ul {
+        padding: 0 0 0 15px;
     }
 
 
@@ -492,6 +509,35 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 <script type="text/javascript">
 $(function(){
     activeImgLoad();
+    var noticeArr = [{
+        common: [
+            "除外商品:部分商品排除，不參與滿額折活動。",
+            "折價券僅限原註冊會員，依「折價券使用辦法」於有效期限內（逾期失效，恕不補發），在新蛋全球生活網消費時使用，恕無法轉讓或合併，部分活動或商品無法折抵使用，亦無法折換現金、找零或交換其他商品及折換其他贈品，且無法抵扣物流、安裝、服務、稅賦等費用。",
+            "折價券之使用方式與注意事項，請參閱「我的帳戶><a href='/MyAccount/Coupon' target='_blank'>我的折價券</a>」使用辦法。",
+            "專案活動及優惠方案（如其他折扣、滿額折、折價券）不可合併使用，會員若同時擁有兩種優惠，只能擇一進行折抵。（如該活動已有滿額折，則折價券無法使用）",
+            "參加消費滿額折之商品，若事後取消訂單或辦理退貨，須將所有參加滿額折商品一併退貨，並僅會退還您實際支付的金額。折價券折抵部分不再另外開立發票，開立發票金額以該訂單「實際支付金額」計算。",
+            "商品顏色因電腦螢幕之設定會略有不同，以實際出貨商品顏色為準。",
+            "商品數量有限，售完為止。",
+            "新蛋全球生活網將保留隨時變更、修改與解釋或終止本「折價券使用辦法」之權利，若有異動及修改，將在本網站上公布，恕不另行個別通知。",
+            "若您有任何疑問，歡迎<a href='mailto:service@newegg.com.tw' target='_self'>來信</a>，我們將於1～2日內（不含例假日）以E-mail回覆您，或請於上班時間（8:30～17:30）來電（02-8170-6025 ）。"
+        ],
+        mounth01: "<span style='font-weight:bold;'>滿額折期間(依活動頁刊頭為主)，1/15 - 1/31全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元，1/25 - 1/31全站結帳滿10,000(含)以上可參加滿額現折1,200元(部分商品除外)。</span><br/>滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。",
+        mounth02: "<span style='font-weight:bold;'>滿額折期間(依活動頁刊頭為主)，<u>2/1-2/16</u>全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元，<div style='display:inline; border:1px solid #DF1B33; margin-right:4px;'> 開工加碼送紅包 </div><u>2/12-2/16</u>全站結帳滿8,000(含)以上可參加滿額現折1,000元(部分商品除外)。</span><br/>滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。",
+        newYeartips: {
+            title: "<h2>春節期間服務暨出貨調整公告</h2>",
+            content: "<p>2016/2/6(六)-2/14(日)適逢春節農曆休假期間，新蛋全球生活網將暫停客服中心的電話與信件回覆服務<br>若您有任何需要，請登入新蛋全球生活網於「我的帳戶>帳戶管理>問答中心」留言或於2/15(一)起致電客服中心洽詢(電話：02-8170-6025)<br>客服中心將於2/15(一)起恢復服務並儘速回覆您的問題，如有不便，敬請見諒</p><ul>另春節期間之配送作業調整說明如下：<li>國內宅配商品(實際配送依物流作業為準)<br>2/3(三)前訂購完成之商品，預計2/4(四)起展開配送<br>2/4(四)後訂購完成之商品，預計2/16(二)起展開配送</li><li>海外進口商品<br>2/3(三)以前未完成進口報關之商品及2/4(四)-2/14(日)期間之訂單，將於2/15(一)開始進行作業，預計到貨時間需9~14天</li></ul>"
+        }
+    }];
+
+    var noticontent = $(".noticeWrap ol");
+    var commonNotice = noticeArr[0]["common"];
+    var newYearTips = noticeArr[0]["newYeartips"];
+
+    noticontent.prepend("<li>"+noticeArr[0]["mounth01"]+"</li>");
+    $.each(commonNotice, function(key,value){
+        noticontent.append("<li>"+value+"</li>");
+    });
+
 
     var DateArr = [
         "2016/01/29 10:00:00",
@@ -529,6 +575,9 @@ $(function(){
         $("a.links.linkEvents").attr("href","https://secure.newegg.com.tw/activity/20160127_cnyannouncement");
         $(".promoLinks_content").hide();
         $("#date0201_promoLinks").show();
+
+        noticontent.find("li").eq(0).html(noticeArr[0]["mounth02"]);
+        $(".noticeWrap").append(newYearTips["title"]+newYearTips["content"]);
     }
 
 
@@ -702,7 +751,7 @@ $(function(){
             <div class="tables">
                 <!-- 1/29 -->
                 <div class="date0129 cubes small justwait" style="top:140px; left:5px; ">
-                    <div class="itemBox" data-itemid="481835">
+                    <div class="itemBox" data-itemid="490426">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -720,7 +769,7 @@ $(function(){
                 </div>
 
                 <div class="date0129 cubes small justwait" style="top:140px; left: 260px; ">
-                    <div class="itemBox" data-itemid="475857">
+                    <div class="itemBox" data-itemid="504193">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -738,7 +787,7 @@ $(function(){
                 </div>
 
                 <div class="date0129 cubes small justwait" style="top:140px; left: 515px; ">
-                    <div class="itemBox" data-itemid="512811">
+                    <div class="itemBox" data-itemid="520829">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -756,7 +805,7 @@ $(function(){
                 </div>
 
                 <div class="date0129 cubes small justwait" style="top:140px; right: 25px; ">
-                    <div class="itemBox" data-itemid="518942">
+                    <div class="itemBox" data-itemid="112109">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -775,7 +824,7 @@ $(function(){
 
                 <!-- 2/1 -->
                 <div class="date0201 cubes small justwait" style="top:740px; left:5px; ">
-                    <div class="itemBox" data-itemid="475714">
+                    <div class="itemBox" data-itemid="474270">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -793,7 +842,7 @@ $(function(){
                 </div>
 
                 <div class="date0201 cubes small justwait" style="top:740px; left: 260px; ">
-                    <div class="itemBox" data-itemid="481998">
+                    <div class="itemBox" data-itemid="474173">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -811,7 +860,7 @@ $(function(){
                 </div>
 
                 <div class="date0201 cubes small justwait" style="top:740px; left: 515px; ">
-                    <div class="itemBox" data-itemid="495928">
+                    <div class="itemBox" data-itemid="208657">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -829,7 +878,7 @@ $(function(){
                 </div>
 
                 <div class="date0201 cubes small justwait" style="top:740px; right: 25px; ">
-                    <div class="itemBox" data-itemid="523366">
+                    <div class="itemBox" data-itemid="519270">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -849,7 +898,7 @@ $(function(){
 
                 <!-- 2/2 -->
                 <div class="date0202 cubes small justwait" style="top:1340px; left:5px; ">
-                    <div class="itemBox" data-itemid="510273">
+                    <div class="itemBox" data-itemid="519266">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -867,7 +916,7 @@ $(function(){
                 </div>
 
                 <div class="date0202 cubes small justwait" style="top:1340px; left: 260px; ">
-                    <div class="itemBox" data-itemid="519029">
+                    <div class="itemBox" data-itemid="498714">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -885,7 +934,7 @@ $(function(){
                 </div>
 
                 <div class="date0202 cubes small justwait" style="top:1340px; left: 515px; ">
-                    <div class="itemBox" data-itemid="483644">
+                    <div class="itemBox" data-itemid="501281">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -903,7 +952,7 @@ $(function(){
                 </div>
 
                 <div class="date0202 cubes small justwait" style="top:1340px; right: 25px; ">
-                    <div class="itemBox" data-itemid="519161">
+                    <div class="itemBox" data-itemid="519265">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -923,7 +972,7 @@ $(function(){
 
                 <!-- 2/3 -->
                 <div class="date0203 cubes small justwait" style="top:1945px; left:5px; ">
-                    <div class="itemBox" data-itemid="506236">
+                    <div class="itemBox" data-itemid="519033">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -941,7 +990,7 @@ $(function(){
                 </div>
 
                 <div class="date0203 cubes small justwait" style="top:1945px; left: 260px; ">
-                    <div class="itemBox" data-itemid="518948">
+                    <div class="itemBox" data-itemid="493359">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -959,7 +1008,7 @@ $(function(){
                 </div>
 
                 <div class="date0203 cubes small justwait" style="top:1945px; left: 515px; ">
-                    <div class="itemBox" data-itemid="499097">
+                    <div class="itemBox" data-itemid="457834">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -977,7 +1026,7 @@ $(function(){
                 </div>
 
                 <div class="date0203 cubes small justwait" style="top:1945px; right: 25px; ">
-                    <div class="itemBox" data-itemid="519164">
+                    <div class="itemBox" data-itemid="468602">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -996,7 +1045,7 @@ $(function(){
 
                 <!-- 2/4 -->
                 <div class="date0204 cubes small justwait" style="top:2545px; left:5px; ">
-                    <div class="itemBox" data-itemid="514004">
+                    <div class="itemBox" data-itemid="519336">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1014,7 +1063,7 @@ $(function(){
                 </div>
 
                 <div class="date0204 cubes small justwait" style="top:2545px; left: 260px; ">
-                    <div class="itemBox" data-itemid="513501">
+                    <div class="itemBox" data-itemid="510211">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1032,7 +1081,7 @@ $(function(){
                 </div>
 
                 <div class="date0204 cubes small justwait" style="top:2545px; left: 515px; ">
-                    <div class="itemBox" data-itemid="495119">
+                    <div class="itemBox" data-itemid="518041">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1050,7 +1099,7 @@ $(function(){
                 </div>
 
                 <div class="date0204 cubes small justwait" style="top:2545px; right: 25px; ">
-                    <div class="itemBox" data-itemid="106601">
+                    <div class="itemBox" data-itemid="519162">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1074,7 +1123,7 @@ $(function(){
         <div class="prods prods02">
             <div class="tables">
                 <div class="cubes small" style="top:40px; left:5px; ">
-                    <div class="itemBox" data-itemid="475084">
+                    <div class="itemBox" data-itemid="113457">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1091,7 +1140,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:40px; left: 260px; ">
-                    <div class="itemBox" data-itemid="516339">
+                    <div class="itemBox" data-itemid="517918">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1108,7 +1157,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:40px; left: 515px; ">
-                    <div class="itemBox" data-itemid="450340">
+                    <div class="itemBox" data-itemid="439329">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1125,7 +1174,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:40px; right: 25px; ">
-                    <div class="itemBox" data-itemid="113471">
+                    <div class="itemBox" data-itemid="510532">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1144,7 +1193,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:510px; left:5px; ">
-                    <div class="itemBox" data-itemid="517744">
+                    <div class="itemBox" data-itemid="519054">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1161,7 +1210,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:510px; left: 260px; ">
-                    <div class="itemBox" data-itemid="502649">
+                    <div class="itemBox" data-itemid="518563">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1178,7 +1227,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:510px; left: 515px; ">
-                    <div class="itemBox" data-itemid="125188">
+                    <div class="itemBox" data-itemid="139166">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1195,7 +1244,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:510px; right: 25px; ">
-                    <div class="itemBox" data-itemid="503524">
+                    <div class="itemBox" data-itemid="440288">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1215,7 +1264,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:980px; left:5px; ">
-                    <div class="itemBox" data-itemid="516069">
+                    <div class="itemBox" data-itemid="504848">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1232,7 +1281,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:980px; left: 260px; ">
-                    <div class="itemBox" data-itemid="518947">
+                    <div class="itemBox" data-itemid="511237">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1249,7 +1298,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:980px; left: 515px; ">
-                    <div class="itemBox" data-itemid="514916">
+                    <div class="itemBox" data-itemid="515425">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1266,7 +1315,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:980px; right: 25px; ">
-                    <div class="itemBox" data-itemid="495836">
+                    <div class="itemBox" data-itemid="518043">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1286,7 +1335,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:1450px; left:5px; ">
-                    <div class="itemBox" data-itemid="450690">
+                    <div class="itemBox" data-itemid="516047">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1303,7 +1352,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:1450px; left: 260px; ">
-                    <div class="itemBox" data-itemid="518439">
+                    <div class="itemBox" data-itemid="507839">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1320,7 +1369,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:1450px; left: 515px; ">
-                    <div class="itemBox" data-itemid="103359">
+                    <div class="itemBox" data-itemid="517712">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1337,7 +1386,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="cubes small" style="top:1450px; right: 25px; ">
-                    <div class="itemBox" data-itemid="519275">
+                    <div class="itemBox" data-itemid="450690">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1362,7 +1411,7 @@ $(function(){
         <div class="prods prods03">
             <div class="tables">
                 <div class="cubes small" style="top:20px; left:5px; ">
-                    <div class="itemBox" data-itemid="510211">
+                    <div class="itemBox" data-itemid="519191">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1380,7 +1429,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:20px; left: 260px; ">
-                    <div class="itemBox" data-itemid="514041">
+                    <div class="itemBox" data-itemid="504065">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1398,7 +1447,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:20px; left: 515px; ">
-                    <div class="itemBox" data-itemid="514060">
+                    <div class="itemBox" data-itemid="517636">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1416,7 +1465,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:20px; right: 25px; ">
-                    <div class="itemBox" data-itemid="515110">
+                    <div class="itemBox" data-itemid="472870">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1435,7 +1484,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:490px; left:5px; ">
-                    <div class="itemBox" data-itemid="507024">
+                    <div class="itemBox" data-itemid="518042">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1453,7 +1502,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:490px; left: 260px; ">
-                    <div class="itemBox" data-itemid="510176">
+                    <div class="itemBox" data-itemid="">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1471,7 +1520,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:490px; left: 515px; ">
-                    <div class="itemBox" data-itemid="513399">
+                    <div class="itemBox" data-itemid="465233">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1489,7 +1538,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:490px; right: 25px; ">
-                    <div class="itemBox" data-itemid="486032">
+                    <div class="itemBox" data-itemid="510524">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1509,7 +1558,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:960px; left:5px; ">
-                    <div class="itemBox" data-itemid="516221">
+                    <div class="itemBox" data-itemid="511489">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1527,7 +1576,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:960px; left: 260px; ">
-                    <div class="itemBox" data-itemid="46036">
+                    <div class="itemBox" data-itemid="518947">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1545,7 +1594,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:960px; left: 515px; ">
-                    <div class="itemBox" data-itemid="506990">
+                    <div class="itemBox" data-itemid="475111">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1563,7 +1612,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:960px; right: 25px; ">
-                    <div class="itemBox" data-itemid="485020">
+                    <div class="itemBox" data-itemid="139166">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1583,7 +1632,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:1430px; left:5px; ">
-                    <div class="itemBox" data-itemid="6326">
+                    <div class="itemBox" data-itemid="515084">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1601,7 +1650,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1430px; left: 260px; ">
-                    <div class="itemBox" data-itemid="512614">
+                    <div class="itemBox" data-itemid="503647">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1619,7 +1668,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1430px; left: 515px; ">
-                    <div class="itemBox" data-itemid="510317">
+                    <div class="itemBox" data-itemid="518456">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1637,7 +1686,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1430px; right: 25px; ">
-                    <div class="itemBox" data-itemid="516386">
+                    <div class="itemBox" data-itemid="472350">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1656,7 +1705,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:1900px; left:5px; ">
-                    <div class="itemBox" data-itemid="516224">
+                    <div class="itemBox" data-itemid="519149">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1674,7 +1723,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1900px; left: 260px; ">
-                    <div class="itemBox" data-itemid="516229">
+                    <div class="itemBox" data-itemid="519274">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1692,7 +1741,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1900px; left: 515px; ">
-                    <div class="itemBox" data-itemid="475700">
+                    <div class="itemBox" data-itemid="515198">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1710,7 +1759,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:1900px; right: 25px; ">
-                    <div class="itemBox" data-itemid="487929">
+                    <div class="itemBox" data-itemid="519117">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1730,7 +1779,7 @@ $(function(){
 
 
                 <div class="cubes small" style="top:2370px; left:5px; ">
-                    <div class="itemBox" data-itemid="494755">
+                    <div class="itemBox" data-itemid="518492">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1748,7 +1797,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:2370px; left: 260px; ">
-                    <div class="itemBox" data-itemid="307204">
+                    <div class="itemBox" data-itemid="518491">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1766,7 +1815,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:2370px; left: 515px; ">
-                    <div class="itemBox" data-itemid="441967">
+                    <div class="itemBox" data-itemid="519071">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1784,7 +1833,7 @@ $(function(){
                 </div>
 
                 <div class="cubes small" style="top:2370px; right: 25px; ">
-                    <div class="itemBox" data-itemid="482830">
+                    <div class="itemBox" data-itemid="495753">
                         <div class="pic">
                             <a href="{{itemLink}}" target="_blank">
                                 <img src="{{itemImgUrl_1_300}}" alt="{{itemName_50}}" class="ActiveItemImgCen">
@@ -1822,19 +1871,6 @@ $(function(){
       <div class="noticeWrap">
         <h2>活動注意事項</h2>
         <ol>
-            <li>
-                <span style="font-weight:bold;">滿額折期間(依活動頁刊頭為主)，1/15 - 1/31全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元，1/25 - 1/31全站結帳滿10,000(含)以上可參加滿額現折1,200元(部分商品除外)。</span><br/>
-                滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。
-            </li>
-            <li>除外商品：部分商品排除，不參與滿額折活動。</li>
-            <li>折價券僅限原註冊會員，依「折價券使用辦法」於有效期限內（逾期失效，恕不補發），在新蛋全球生活網消費時使用，恕無法轉讓或合併，部分活動或商品無法折抵使用，亦無法折換現金、找零或交換其他商品及折換其他贈品，且無法抵扣物流、安裝、服務、稅賦等費用。</li>
-            <li>折價券之使用方式與注意事項，請參閱「我的帳戶><a href="/MyAccount/Coupon" target="_blank">我的折價券</a>」使用辦法。</li>
-            <li>專案活動及優惠方案（如其他折扣、滿額折、折價券）不可合併使用，會員若同時擁有兩種優惠，只能擇一進行折抵。（如該活動已有滿額折，則折價券無法使用）</li>
-            <li>參加消費滿額折之商品，若事後取消訂單或辦理退貨，須將所有參加滿額折商品一併退貨，並僅會退還您實際支付的金額。折價券折抵部分不再另外開立發票，開立發票金額以該訂單「實際支付金額」計算。</li>
-            <li>商品顏色因電腦螢幕之設定會略有不同，以實際出貨商品顏色為準。</li>
-            <li>商品數量有限，售完為止。</li>
-            <li>新蛋全球生活網將保留隨時變更、修改與解釋或終止本「折價券使用辦法」之權利，若有異動及修改，將在本網站上公布，恕不另行個別通知。</li>
-            <li>若您有任何疑問，歡迎<a href="mailto:service@newegg.com.tw" target="_self">來信</a>，我們將於1～2日內（不含例假日）以E-mail回覆您，或請於上班時間（8:30～17:30）來電（02-8170-6025）。</li>
         </ol>
       </div>
     </div>

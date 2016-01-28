@@ -7,9 +7,9 @@
         <script type="text/javascript">
         $(function(){
             var DateArr = [
-                "2016/01/26 16:39:00",
-                "2016/01/26 16:40:00",
-                "2016/01/26 16:41:00"
+                "2016/01/28 16:39:00",
+                "2016/01/28 16:40:00",
+                "2016/01/28 16:41:00"
             ];
 
             countdown(DateArr,function(key) {
@@ -36,7 +36,7 @@
 
                 $.each(tempArr, function(key,value) {
 
-                    $("body").append("<div class='times"+key+"'></div>");
+                    $("body").append("<div class='times"+key+"' style='display:none;'></div>");
 
                     var timeout = [];
                     var finalTimeSet = getNewTime(value);
@@ -83,47 +83,61 @@
                     xmlHttp.send('');
                     var dates = new Date(xmlHttp.getResponseHeader("Date")).toString().split(" ");
 
-                    var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-                    var Mounth = dates[1].toUpperCase();
-                    switch(Mounth){
-                        case mounthArr[0]:
-                            Mounth = "01";
-                            break;
-                        case mounthArr[1]:
-                            Mounth = "02";
-                            break;
-                        case mounthArr[2]:
-                            Mounth = "03";
-                            break;
-                        case mounthArr[3]:
-                            Mounth = "04";
-                            break;
-                        case mounthArr[4]:
-                            Mounth = "05";
-                            break;
-                        case mounthArr[5]:
-                            Mounth = "06";
-                            break;
-                        case mounthArr[6]:
-                            Mounth = "07";
-                            break;
-                        case mounthArr[7]:
-                            Mounth = "08";
-                            break;
-                        case mounthArr[8]:
-                            Mounth = "09";
-                            break;
-                        case mounthArr[9]:
-                            Mounth = "10";
-                            break;
-                        case mounthArr[10]:
-                            Mounth = "11";
-                            break;
-                        case mounthArr[11]:
-                            Mounth = "12";
-                            break;
+                    console.log(dates);
+                    if(navigator.userAgent.indexOf("MSIE")>0) {
+                        if(navigator.userAgent.indexOf("MSIE 8.0") > 0 || navigator.userAgent.indexOf("MSIE 9.0") >0){
+                            return dates[5]+"/"+mounthCalc(dates[1])+"/"+dates[2]+" "+dates[3];
+                        }
+                    }else{
+                        return dates[3]+"/"+mounthCalc(dates[1])+"/"+dates[2]+" "+dates[4];
                     }
-                    return dates[3]+"/"+Mounth+"/"+dates[2]+" "+dates[4];
+
+                    function mounthCalc(obj){
+                        var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+                        var Mounth = obj.toUpperCase();
+                        switch(Mounth){
+                            case mounthArr[0]:
+                                Mounth = "01";
+                                break;
+                            case mounthArr[1]:
+                                Mounth = "02";
+                                break;
+                            case mounthArr[2]:
+                                Mounth = "03";
+                                break;
+                            case mounthArr[3]:
+                                Mounth = "04";
+                                break;
+                            case mounthArr[4]:
+                                Mounth = "05";
+                                break;
+                            case mounthArr[5]:
+                                Mounth = "06";
+                                break;
+                            case mounthArr[6]:
+                                Mounth = "07";
+                                break;
+                            case mounthArr[7]:
+                                Mounth = "08";
+                                break;
+                            case mounthArr[8]:
+                                Mounth = "09";
+                                break;
+                            case mounthArr[9]:
+                                Mounth = "10";
+                                break;
+                            case mounthArr[10]:
+                                Mounth = "11";
+                                break;
+                            case mounthArr[11]:
+                                Mounth = "12";
+                                break;
+                        }
+
+                        return Mounth;
+                    }
+
+
                 }
 
                 function getNewTime(obj){

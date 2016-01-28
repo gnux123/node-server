@@ -46,7 +46,7 @@ router.get('/votes',function(req,res){
 });
 
 router.get('/date',function(req,res){
-    res.sendfile(__dirname + '/app/20160115_aNewLook3.html');
+    res.sendfile(__dirname + '/app/aboutme.html');
 
 });
 
