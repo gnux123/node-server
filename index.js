@@ -12,7 +12,7 @@ var router = express.Router();
 var apiUri = "http://www.newegg.com.tw/";
 
 
-//event images folder
+//images and js folder
 app.use(express.static(__dirname + '/app/public'));
 
 

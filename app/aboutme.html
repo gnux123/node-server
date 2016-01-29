@@ -7,14 +7,16 @@
         <script type="text/javascript">
         $(function(){
 
-            var source = $.get("/events");
+            var source = $.get("/events/20160201_Lovepsychologicaltest");
 
             source.done(function(html){
-                console.log(html);
-                var content = $.parseHTML(html);
-                $("head").append(content[5]);
-                $("body").append(content[9]);
-                console.log(content);
+                $("body").html(html);
+
+                // console.log(html);
+                // var content = $.parseHTML(html);
+                // $("head").append(content[5]);
+                // $("body").append(content[9]);
+                // console.log(content);
             });
 
             // var DateArr = [
