@@ -6,19 +6,30 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script type="text/javascript">
         $(function(){
-            var DateArr = [
-                "2016/01/28 16:39:00",
-                "2016/01/28 16:40:00",
-                "2016/01/28 16:41:00"
-            ];
 
-            countdown(DateArr,function(key) {
-                if(key == 0){
-                    $(".times"+key).text("times up!!!");
-                }else{
-                    alert(key);
-                }
+            var source = $.get("/events");
+
+            source.done(function(html){
+                console.log(html);
+                var content = $.parseHTML(html);
+                $("head").append(content[5]);
+                $("body").append(content[9]);
+                console.log(content);
             });
+
+            // var DateArr = [
+            //     "2016/01/28 22:39:00",
+            //     "2016/01/28 22:40:00",
+            //     "2016/01/28 22:41:00"
+            // ];
+            //
+            // countdown(DateArr,function(key) {
+            //     if(key == 0){
+            //         $(".times"+key).text("times up!!!");
+            //     }else{
+            //         alert(key);
+            //     }
+            // });
 
             function countdown(obj,callback){
                 var serverDate = serverTime();
@@ -36,7 +47,7 @@
 
                 $.each(tempArr, function(key,value) {
 
-                    $("body").append("<div class='times"+key+"' style='display:none;'></div>");
+                    $("body").append("<div class='times"+key+"'></div>");
 
                     var timeout = [];
                     var finalTimeSet = getNewTime(value);
@@ -53,6 +64,7 @@
                             }
                         }else{
                             spantTime = spantTime - 1000;
+                            $(".times"+key).html(spantTime);
                             setTimeout(testTime, 1000);
                         }
                     }
@@ -83,9 +95,8 @@
                     xmlHttp.send('');
                     var dates = new Date(xmlHttp.getResponseHeader("Date")).toString().split(" ");
 
-                    console.log(dates);
                     if(navigator.userAgent.indexOf("MSIE")>0) {
-                        if(navigator.userAgent.indexOf("MSIE 8.0") > 0 || navigator.userAgent.indexOf("MSIE 9.0") >0){
+                        if(navigator.userAgent.indexOf("MSIE 7.0") > 0 || navigator.userAgent.indexOf("MSIE 8.0") > 0 || navigator.userAgent.indexOf("MSIE 9.0") >0){
                             return dates[5]+"/"+mounthCalc(dates[1])+"/"+dates[2]+" "+dates[3];
                         }
                     }else{

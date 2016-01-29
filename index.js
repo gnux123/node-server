@@ -12,6 +12,7 @@ var router = express.Router();
 var apiUri = "http://www.newegg.com.tw/";
 
 
+//event images folder
 app.use(express.static(__dirname + '/app/public'));
 
 
@@ -50,13 +51,20 @@ router.get('/date',function(req,res){
 
 });
 
-router.get('/events',function(req,res){
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // res.setHeader('Access-Control-Allow-Credentials', true);
-    res.sendfile(__dirname + '/app/event.html');
+
+router.get('/events/:eventName',function(req,res){
+    var eventFileName = req.params.eventName;
+
+    console.log(req.params.eventName);
+
+    if(eventFileName!=""){
+        res.sendfile(__dirname + '/app/'+ eventFileName +'.html');
+    }else if(eventFileName==""){
+        res.sendfile(__dirname + '/app/event.html');
+    }
 });
+
+
 
 
 //server side parse data

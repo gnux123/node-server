@@ -1,0 +1,704 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>20160201_Lovepsychologicaltest</title>
+
+</head>
+<body>
+<style type="text/css">
+    body {
+	    font-family:Decker,微軟正黑體;
+	    background: url(/20160201_Lovepsychologicaltest/bg.jpg) repeat;
+        background-position:-48px 480px;
+    }
+    .mainPadding {margin-bottom:0;}
+    a {outline:none;}
+    html, body, .content, .banner {
+	    /*width:100%;*/
+	    min-width:1100px;
+    }
+    /*.topper .keyword .word {
+        text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 8px #fff;
+    }*/
+    /*樓層，包含banner亦為一個樓層*/
+    .banner {
+	    background: url("/20160201_Lovepsychologicaltest/banner3.jpg") no-repeat top center;
+        padding-top: 810px;
+        height: 28px;
+	    margin-top: -175px;
+    }
+    .menu {
+	    position: relative;
+	    /*z-index:1;*/
+      height:47px;
+      background:#F9565E;
+      top: -85px;
+    }
+        .menu.fixed {
+            position:fixed;
+            top:-2px;
+            left:0;
+            z-index:9;
+            opacity:.9;
+            transition:.5s;
+        }
+        .menu.fixed .tit {left:0;}
+        .menu.fixed:hover {
+            opacity:1;
+        }
+    .banner .inside {
+        margin:0;
+        padding:0;
+	    text-align:center;
+	    width:100%;
+        height:42px;
+	    min-width:1100px;
+    }
+    .banner .inside:not(s) {filter:none;}/* IE9+ filter reset */
+
+    .tit, .tit:hover, .tit:visited {
+          color: #F9565E;
+          font-weight: bolder;
+          font-size: 17px;
+          position:relative;
+          display:inline-block;
+          width:118px;
+          height:41px;
+          background-image:url(/20160201_Lovepsychologicaltest/tit.png);
+          background-repeat:no-repeat;
+          /*transition:.3s;
+          transition-delay:.5s;*/
+          line-height: 41px;
+          top: 0px;
+          left: 120px;
+          z-index: 9;
+          webkit-transition-duration: 0s;
+          -moz-transition-duration: 0s;
+          -o-transition-duration: 0s;
+          transition-duration: 0s;
+    }
+    /*.tit:hover, .tit.active {color:#1BB9EF;}*/
+    .tit:hover, .active {color:#1BB9EF;}
+/*    .links, .links:hover, .links:visited {
+        position:relative;
+        display:inline-block;
+        margin:0px 10px;
+        width:118px;
+        height:41px;
+        background-image:url(/20160201_Lovepsychologicaltest/tit.png);
+        background-repeat:no-repeat;
+        transition:.3s;
+        transition-delay:.5s;
+        line-height: 41px;
+        top: 0px;
+        left: 160px;
+    }*/
+        /*.links:after {
+            content:" ";
+            position:absolute;
+            top:-3px;
+            left:-7px;
+            z-index:-1;
+            display:inline-block;
+            width:200px;
+            height:26px;
+            background-color:transparent;
+        transition:.3s;
+        transition-delay:.5s;
+        }
+        .links:hover:after,.links.active:after {
+            background-color:#dc3f5e;
+            transition-delay:0s;
+        }*/
+        /*.links:hover, .links.active {
+            background-image:url(/20160201_Lovepsychologicaltest/nav-txt-hover.png);
+            transition-delay:0s;
+        }*/
+        /*.links:before {
+            content:"";
+            position:relative;
+            top:3px;
+            left:-128px;
+            display:inline-block;
+            width:1px;
+            height:15px;
+        }
+        .links+.links:before {
+            background:#dc3f5e;
+            box-shadow:.5px 0 0px #FCA3B9;
+        }*/
+    .link02 {}
+    .link03 {}
+    .link04 {}
+
+    .inside {width:1030px;margin:0px auto;padding-bottom:20px;}
+    .inside:after {content:"";clear:both;display:block;width:100%;}
+
+    .NotesRules {background: #fff;}
+    .NotesRules .inside{ padding:30px 0; background:none;    width: 740px;}
+    .NotesRules h2{
+    	color:#333;
+        font-size: 18px;
+        line-height:30px;
+    	letter-spacing:3px;
+    	margin-bottom: 10px;
+    	text-align: left;
+    	width: 100%;
+    	border-bottom: 2px solid #000;
+    	border-left: 2px solid #000;
+    	padding: 0 0 5px 15px;
+    	font-weight: bolder;
+    }
+    .NotesRules li{
+    	color: #333;
+        line-height: 25px;
+        letter-spacing: 1.3px;
+        font-size: 15px;
+    	list-style-type: decimal;
+    	margin-left:45px;
+    }
+    .NotesRules li a{border-bottom:1px solid;    color: #FA676E;}
+
+        .NotesRules li a:hover {background:#FA676E; color:#fff;}
+
+    .Floor {
+        position:relative;
+    }
+    .Floor:before {
+        content:"";
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:-1;
+        width:100%;
+        height:100%;
+        background:#fe97c2;
+        mix-blend-mode:multiply;
+    }
+
+    .Floor.F02:before {background:url(/20160201_Lovepsychologicaltest/bg01.gif) repeat-x #8db6dd;}
+    .Floor.F03:before {background:url(/20160201_Lovepsychologicaltest/bg02.gif) repeat-x #bbb;}
+    .Floor.F04:before {background:url(/20160201_Lovepsychologicaltest/bg03.gif) repeat-x #f3ae44;}
+
+    .title {
+        margin:0 auto;
+        width:100%;
+        height:150px;
+    }
+    .F02 .title {
+        background-image:url(/20160201_Lovepsychologicaltest/section02.jpg);
+    }
+    .F03 .title {
+        background-image:url(/20160201_Lovepsychologicaltest/section03.jpg);
+    }
+    .F04 .title {
+        background-image:url(/20160201_Lovepsychologicaltest/section04.jpg);
+    }
+
+
+    /*基本商品方框CSS*/
+    .pic a:before {
+        content:"";
+	    display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    .itemBox {
+        position: relative;
+        padding:10px 10px 10px;
+        border: 1px solid #000;
+        width: 220px;
+        float: left;
+        margin: 5px 6px;
+		    z-index: 1;
+        background: #fff;
+    }
+    .itemBox .pic {
+        height: 200px;
+        width: 220px;
+	    margin-bottom:10px;
+	    text-align: center;
+	    overflow:hidden;
+        background:#fff;
+    }
+    .itemBox .pic img {
+	    max-height:200px;
+	    max-width:220px;
+	    vertical-align: middle;
+    }
+    .itemBox .txt { height:101px;}
+    .itemBox .txt:after {content:"";clear:both;display:block;}
+    .itemBox .SubTitle {
+	    margin-top: 10px;
+        height:16px;
+	    overflow: hidden;
+        font-size:14px;
+        text-align:left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+	    color:#000;
+    }
+
+    .itemBox h3 {
+        color: #DE5672;
+        font-size: 16px;
+        line-height: 1.3em;
+        margin-top: 6px;
+        height:40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align:left;
+        display: -webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient: vertical;
+    }
+    .itemBox .price {
+	    display:block;
+        margin-top:15px;
+	    color: #000;
+        font-size:22px;
+	    display: block;
+        font-weight:bold;
+        text-shadow:0 0 .5px #fff;
+        float: right;
+    }
+    .itemBox .price:before {
+        content: "限時心動價";
+        display: block;
+        color: #6D6E71;
+        position: relative;
+        font-size: 15px;
+    }
+    .itemBox .price span {
+	    font-size:14px;
+	    margin-right:3px;
+    }
+    .itemBox .marketPrice {
+        font-size: 12px;
+        color: #000;
+        text-decoration: line-through;
+        float: right;
+        display: block;
+	    margin:15px 10px 0 0;
+    }
+    .buy, .buy:visited {
+	    position:absolute;
+        left:10px;
+	    bottom:10px;
+	    padding:5px 20px;
+        background:#fff;
+        text-align:center;
+        font-size:15px;
+        font-weight:bold;
+	    color:#d04b60;
+        letter-spacing:5px;
+        text-decoration:none;
+        transition:.5s;
+    }
+    .itemBox:hover .buy {
+        background:#d04b60;
+        color:#fff;
+    }
+
+
+
+    .F01 {    background: url("/20160201_Lovepsychologicaltest/1.jpg") no-repeat top center; height:942px;}
+    .F02 {    background: url("/20160201_Lovepsychologicaltest/2.jpg") no-repeat top center; height:1005px;}
+    .F03 {    background: url("/20160201_Lovepsychologicaltest/3.jpg") no-repeat top center; height:1001px;}
+    .F04 {    background: url("/20160201_Lovepsychologicaltest/4.jpg") no-repeat top center; height:998px;}
+    .F05 {    background: url("/20160201_Lovepsychologicaltest/5.jpg") no-repeat top center; height:1021px;}
+    .F06 {    background: url("/20160201_Lovepsychologicaltest/6.jpg") no-repeat top center; height:665px;}
+    .F07 {    background: url("/20160201_Lovepsychologicaltest/7.jpg") no-repeat top center; height:643px;}
+
+
+
+    .DessertImg {
+      position: relative;
+      width: 1100px;
+      margin: 0 auto;
+      top: -360px;
+    }
+    .DessertImg .links {
+          position: absolute;
+    }
+
+    .Dessertlink01:hover, .Dessertlink02:hover, .Dessertlink03:hover, .Dessertlink04:hover, .Dessertlink05:hover, .Dessertlink06:hover, .Dessertlink07:hover {
+         box-shadow: 0px 0 50px rgb(255, 255, 255),inset 0px 6px 0 0 rgba(255, 255, 255, 0.23);
+    }
+
+    .DessertImg .Dessertlink00 { cursor: context-menu; width: 353px; height: 623px;top: -244px; left: 41px; z-index: 8; background: url("/20160201_Lovepsychologicaltest/girl2.png") no-repeat top center;}
+    .DessertImg .Dessertlink01 { /*width:153px; height:153px;*/ padding: 76.5px; border-radius: 80px; top:-181px; right:305px; z-index:4; background: url("/20160201_Lovepsychologicaltest/titImg01.png") no-repeat top center;}
+    .DessertImg .Dessertlink02 { /*width:238px; height:232px;*/ padding: 116px 119px; border-radius: 120px; top: -18px; right: 143px; z-index: 1; background: url("/20160201_Lovepsychologicaltest/titImg02.png") no-repeat top center;}
+    .DessertImg .Dessertlink03 { /*width:265px; height:265px;*/ padding: 132.5px; border-radius: 130px; top: -219px; left: 377px; z-index: 7; background: url("/20160201_Lovepsychologicaltest/titImg03.png") no-repeat top center;}
+    .DessertImg .Dessertlink04 { /*width:177px; height:167px;*/ padding: 83.5px 88.5px; border-radius: 90px;top: -291px; right: 373px; z-index: 3; background: url("/20160201_Lovepsychologicaltest/titImg04.png") no-repeat top center;}
+    .DessertImg .Dessertlink05 { /*width:176px; height:473px;*/ padding: 83.5px 88.5px; border-radius: 90px;top: -255px; right: 30px; z-index: 2; background: url("/20160201_Lovepsychologicaltest/titImg05.png") no-repeat top center;}
+    .DessertImg .Dessertlink06 { /*width:219px; height:218px;*/ padding: 109px 109.5px; border-radius: 110px;top: -167px; right: 114px; z-index: 5;background: url("/20160201_Lovepsychologicaltest/titImg06.png") no-repeat top center;}
+    .DessertImg .Dessertlink07 { /*width:195px; height:197px;*/ padding: 98.5px 97.5px; border-radius: 100px; top: -53px;  right: 333px; z-index: 6;background: url("/20160201_Lovepsychologicaltest/titImg07.png") no-repeat top center;}
+
+    .DessertImg .Dessertlink05::after {
+      content:""; width:17px; height:320px; position: absolute; background: url("/20160201_Lovepsychologicaltest/titImg05_1.png") no-repeat top center;
+      top: 165px;
+      right: 66px;
+      z-index: 1;
+    }
+
+    .FBcontent {
+    		width: 714px;
+        margin: 0 auto;
+        border-top: 1px solid #CFCFCF;
+        height: 650px;
+    		overflow-x: hidden;
+    		padding: 10px 10px 0 10px;
+    }
+    .FBtit {
+      background: url("/20160201_Lovepsychologicaltest/FBtit.jpg") no-repeat top center;
+      height: 82px;
+      margin-bottom: 20px;
+    }
+    .notice {
+        width: 1000px;
+        margin: 30px auto;
+    }
+
+
+
+
+    @keyframes floatBabyFloat {
+      0% {
+        transform: traslate3d(0, 30px, 2px);
+      }
+      100% {
+        transform: translate3d(0, 20px, 2px);
+      }
+    }
+
+
+
+.Float01 {animation: floatBabyFloat 5s ease-in-out infinite alternate;}
+.Float02 {animation: floatBabyFloat 4s ease-in-out infinite alternate;}
+.Float03 {animation: floatBabyFloat 3s ease-in-out infinite alternate;}
+.Float04 {animation: floatBabyFloat 2s ease-in-out infinite alternate;}
+.Float05 {animation: floatBabyFloat 4s ease-in-out infinite alternate;}
+.Float06 {animation: floatBabyFloat 5s ease-in-out infinite alternate;}
+.Float07 {animation: floatBabyFloat 2s ease-in-out infinite alternate;}
+
+
+.buyNow{
+	position: absolute;
+    color: #fff;
+    border: 1px solid #DE5672;
+    padding:5px;
+    cursor: pointer;
+    bottom: 10px;
+}
+.buyNow:hover{
+	color:#DE5672;
+	background:#DE5672;
+	border: 1px solid #DE5672;
+}
+.buyNow:before{
+	content:'預約愛情';
+	position:absolute;
+	color:#DE5672;
+}
+.buyNow:hover:before{
+	color:#fff;
+}
+
+
+</style>
+
+<div class="content">
+
+ <!--Banner-->
+	<div class="banner">
+      <div class="inside DessertImg" style=" width: 1100px; margin: 0 auto;">
+        <div style=" width: 920px; margin: 0 auto;">
+          <a href="javascript:void(0);" class="links link01 Dessertlink01 Float01"></a>
+          <a href="javascript:void(0);" class="links link02 Dessertlink02 Float02"></a>
+          <a href="javascript:void(0);" class="links link03 Dessertlink03 Float03"></a>
+          <a href="javascript:void(0);" class="links link04 Dessertlink04 Float04"></a>
+          <a href="javascript:void(0);" class="links link05 Dessertlink05 Float05"></a>
+          <a href="javascript:void(0);" class="links link06 Dessertlink06 Float06"></a>
+          <a href="javascript:void(0);" class="links link07 Dessertlink07 Float07"></a>
+          <a href="javascript:void(0);" class="links Dessertlink00"></a>
+        </div>
+      </div>
+    	<div class="menu inside">
+        <a href="javascript:void(0);" class="links link01 tit">濃情巧克力</a>
+        <a href="javascript:void(0);" class="links link02 tit">夢幻草莓塔</a>
+        <a href="javascript:void(0);" class="links link03 tit">酸甜檸檬派</a>
+        <a href="javascript:void(0);" class="links link04 tit">起司蛋糕</a>
+        <a href="javascript:void(0);" class="links link05 tit">手作餅乾</a>
+        <a href="javascript:void(0);" class="links link06 tit">香醇微苦咖啡</a>
+        <a href="javascript:void(0);" class="links link07 tit">可口冰淇淋</a>
+        </div>
+    </div>
+
+    <!--樓層一 -->
+    	<div class="Floor F01">
+        	<div class="title"></div>
+    		<div class="inside">
+    <div class="itemBox" data-itemid="468008"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}" class="ActiveItemImgCen"/></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468009"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468007"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468021"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="517183"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="517181"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="517176"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="514393"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    			<br clear="all">
+    		</div>
+    	</div>
+
+    <!--樓層二 -->
+    	<div class="Floor F02">
+        	<div class="title"></div>
+        	<div class="inside">
+    <div class="itemBox" data-itemid="510967"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="510969"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="514386"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="514388"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498323"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498302"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="504981"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498319"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    						<br clear="all">
+            </div>
+        </div>
+
+    <!--樓層3 -->
+        <div class="Floor F03">
+        	<div class="title"></div>
+        	<div class="inside">
+    <div class="itemBox" data-itemid="498322"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498321"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498320"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498310"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="498317"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="504937"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="504938"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="504975"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    			<br clear="all">
+            </div>
+        </div>
+
+    <!--樓層4 -->
+        <div class="Floor F04">
+        	<div class="title" style="height: 150px;"></div>
+        	<div class="inside">
+    <div class="itemBox" data-itemid="468027"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468026"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468023"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468022"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468025"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468018"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468016"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    <div class="itemBox" data-itemid="468020"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    			<br clear="all">
+            </div>
+        </div>
+
+    		<!--樓層5 -->
+    		    <div class="Floor F05">
+    		    	<div class="title" style="height: 155px;"></div>
+    		    	<div class="inside">
+    		<div class="itemBox" data-itemid="510191"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="510395"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="515855"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="517032"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="489320"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=1833" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=1833" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="489321"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=1833" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=1833" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="489340"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2495" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2495" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    		<div class="itemBox" data-itemid="510076"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=3155" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=3155" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    					<br clear="all">
+    		        </div>
+    		    </div>
+
+    				<!--樓層6 -->
+    						<div class="Floor F06">
+    							<div class="title" style="height: 155px;"></div>
+    							<div class="inside">
+    				<div class="itemBox" data-itemid="479023"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    				<div class="itemBox" data-itemid="492247"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2190" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2190"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    				<div class="itemBox" data-itemid="503001"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    				<div class="itemBox" data-itemid="481526"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2190" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2190" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    							<br clear="all">
+    								</div>
+    						</div>
+
+    						<!--樓層7 -->
+    								<div class="Floor F07">
+    									<div class="title" style="height: 160px;"></div>
+    									<div class="inside">
+    						<div class="itemBox" data-itemid="491574"><div class="pic "><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2592" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="https://secure.newegg.com.tw/Category/ChooseAny?CategoryID=2592" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    						<div class="itemBox" data-itemid="470087"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    						<div class="itemBox" data-itemid="514412"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    						<div class="itemBox" data-itemid="502563"><div class="pic "><a href="{{itemLink}}" target="_blank"><span class="vSpan"></span><img src="{{itemImgUrl_1_300}}" alt="{{itemName}}"class="ActiveItemImgCen" /></a></div><div class="txt"><a href="{{itemLink}}" target="_blank"><p class="SubTitle">{{itemSubTitle}}</p><h3 title="{{itemName}}">{{itemName_40}}</h3>{{itemPrice}}</a></div>{{itemAddToSC}}</div>
+    									<br clear="all">
+    										</div>
+    								</div>
+
+
+
+  <!--注意事項-->
+      <div class="NotesRules">
+          <div class="inside">
+          	<div class="FBtit"></div>
+              <div class="FBcontent">
+  							<div id="fb-root"></div>
+  							<div class="fb-comments" data-href="http://172.22.61.21/activity/20160201_Lovepsychologicaltest" data-width="100%" data-numposts="5"></div>
+              </div>
+          </div>
+  				<div class="notice">
+  					<h2>活動注意事項與規則</h2>
+  					<ul>
+  							<li><span style="font-weight:bold;">滿額折期間(依活動頁刊頭為主)，2/1-2/16全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元， 開工加碼送紅包 2/12-2/16全站結帳滿8,000(含)以上可參加滿額現折1,000元(部分商品除外)。</span>滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。</li>
+  							<li>除外商品：部分商品排除，不參與滿額折活動。</li>
+  							<li>折價券僅限原註冊會員，依「折價券使用辦法」於有效期限內（逾期失效，恕不補發），在新蛋全球生活網消費時使用，恕無法轉讓或合併，部分活動或商品無法折抵使用，亦無法折換現金、找零或交換其他商品及折換其他贈品，且無法抵扣物流、安裝、服務、稅賦等費用。</li>
+  							<li>折價券之使用方式與注意事項，請參閱「我的帳戶><a href="/MyAccount/Coupon" target="_blank">我的折價券</a>」使用辦法。</li>
+  							<li>專案活動及優惠方案（如其他折扣、滿額折、折價券）不可合併使用，會員若同時擁有兩種優惠，只能擇一進行折抵。（如該活動已有滿額折，則折價券無法使用）</li>
+  							<li>參加消費滿額折之商品，若事後取消訂單或辦理退貨，須將所有參加滿額折商品一併退貨，並僅會退還您實際支付的金額。折價券折抵部分不再另外開立發票，開立發票金額以該訂單「實際支付金額」計算。</li>
+  							<li>商品顏色因電腦螢幕之設定會略有不同，以實際出貨商品顏色為準。</li>
+  							<li>商品數量有限，售完為止。</li>
+  							<li>新蛋全球生活網將保留隨時變更、修改與解釋或終止本「折價券使用辦法」之權利，若有異動及修改，將在本網站上公布，恕不另行個別通知。</li>
+  							<li>若您有任何疑問，歡迎<a href="mailto:service@newegg.com.tw" target="_self">來信</a>，我們將於1～2日內（不含例假日）以E-mail回覆您，或請於上班時間（8:30～17:30）來電（02-8170-6025）。</li>
+  					</ul>
+  					<br/>
+  					<br/>
+  					<h2>春節期間服務暨出貨調整公告</h2>
+  					<ul style="line-height: 30px;    color: #000;">
+  							<span style="padding-left: 20px; display: block;">2016/2/6(六)-2/14(日)適逢春節農曆休假期間，新蛋全球生活網將暫停客服中心的電話與信件回覆服務<br/>
+  									若您有任何需要，請登入新蛋全球生活網於「我的帳戶>帳戶管理>問答中心」留言或於2/15(一)起致電客服中心洽詢(電話：02-8170-6025)<br/>
+  									客服中心將於2/15(一)起恢復服務並儘速回覆您的問題，如有不便，敬請見諒<br/>
+  							</span>
+  							<br/>
+  							<span style="padding-left: 20px; display: block;">除外商品：部分商品排除，不參與滿額折活動。</span>
+  							<li>國內宅配商品(實際配送依物流作業為準)<br/>
+  									2/3(三)前訂購完成之商品，預計2/4(四)起展開配送<br/>
+  									2/4(四)後訂購完成之商品，預計2/16(二)起展開配送
+  							</li>
+  							<br/>
+  							<li>海外進口商品<br/>
+  									2/3(三)以前完成進口報關之商品，將於2/4(四)起展開配送<br/>
+  									2/4(四)-2/14(日)期間之訂單，統一於2/15(一)進行報關，並於2/17(三)起展開配送
+  							</li>
+  					</ul>
+  				</div>
+      </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js" charset="utf-8"></script>
+    <!-- <script src="/img/Activity/20151231_NewArrivals/activeImgCen.js"></script> -->
+    <script type="text/javascript">
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(function(){
+            // activeImgLoad();
+
+            //menuScrollAnimate
+            var menuFixedHeight = $(".menu").height();
+
+            $(document).ready(function(){ detectPos(menuFixedHeight); });
+            $(window).scroll(function(){ detectPos(menuFixedHeight); });
+
+            $("a.links").click(function(){
+                var _index = $(this).index() + 1;
+                smoothScroll("0"+_index);
+
+                detectPos(menuFixedHeight);
+
+            });
+
+
+
+            function smoothScroll(obj) {
+              var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+              $body.animate({
+                scrollTop: $('.F'+obj).offset().top - menuFixedHeight
+              }, 1000);
+              return false;
+            }
+
+            function detectPos(obj){
+                var menuHeight = obj;
+                var pos = $(window).scrollTop();
+
+                var floorArr = [];
+                var floorLen = 8;
+                for(i=1; i < floorLen; i++){
+                    var overHeight = $(".F0"+i).offset().top;
+                    floorArr[i-1] = overHeight;
+                }
+
+                for(i=0; i < floorArr.length; i++){
+                    if(pos >= floorArr[i] - menuFixedHeight){
+                        $(".menu").addClass("fixed");
+                        $(".menu > a").eq(i).addClass("active").siblings(".active").removeClass("active");
+                    }else if(pos == 0 || pos < floorArr[0] - menuFixedHeight){
+                        $(".menu > a").removeClass("active");
+                        $(".menu").removeClass("fixed");
+                    }
+                }
+            }
+
+
+        });
+
+
+        // var _menuTop = $('.menu').offset().top;
+        //
+        // $(function () {
+        //     $(window).scroll(function(){
+        //         monthActive();
+        //         fixedMenu();
+        //     })
+        // });
+        //
+        // function fixedMenu() {
+        //     if ($(window).scrollTop() >= _menuTop) {
+        //         $('.menu').addClass("fixed");
+        //     }
+        //     else {
+        //         $('.menu').removeClass("fixed");
+        //     }
+        // }
+
+
+    </script>
+
+
+<!--<script>
+(function(e){var t={init:function(t){return this.each(function(){e(this).data("jSetting",e.extend({},e.fn.jqFloat.defaults,t));e(this).data("jDefined",true);var n=e("<div/>").css({width:e(this).outerWidth(true),height:e(this).outerHeight(true),"z-index":e(this).css("zIndex")});if(e(this).css("position")=="absolute")n.css({position:"absolute",top:e(this).position().top,left:e(this).position().left});else n.css({"float":e(this).css("float"),position:"relative"});if((e(this).css("marginLeft")=="0px"||e(this).css("marginLeft")=="auto")&&e(this).position().left>0&&e(this).css("position")!="absolute"){n.css({marginLeft:e(this).position().left})}e(this).wrap(n).css({position:"absolute",top:0,left:0})})},update:function(t){e(this).data("jSetting",e.extend({},e.fn.jqFloat.defaults,t))},play:function(){if(!e(this).data("jFloating")){e(this).data("jFloating",true)}n(this)},stop:function(){this.data("jFloating",false)}};var n=function(t){var r=e(t).data("jSetting");var i=Math.floor(Math.random()*r.width)-r.width/2;var s=Math.floor(Math.random()*r.height)-r.height/2-r.minHeight;var o=Math.floor(Math.random()*r.speed)+r.speed/2;e(t).stop().animate({top:s,left:i},o,function(){if(e(this).data("jFloating"))n(this);else e(this).animate({top:0,left:0},o/2)})};e.fn.jqFloat=function(n,r){var i=e(this);if(t[n]){if(i.data("jDefined")){if(r&&typeof r==="object")t.update.apply(this,Array.prototype.slice.call(arguments,1))}else t.init.apply(this,Array.prototype.slice.call(arguments,1));t[n].apply(this)}else if(typeof n==="object"||!n){if(i.data("jDefined")){if(n)t.update.apply(this,arguments)}else t.init.apply(this,arguments);t.play.apply(this)}else e.error("Method "+n+" does not exist!");return this};e.fn.jqFloat.defaults={width:100,height:100,speed:1e3,minHeight:0}})(jQuery)
+</script>
+<script type="text/javascript">
+$('.DessertImg .Float').each(function() {
+
+  $(this).jqFloat({
+
+    width:Math.floor(Math.random()*10)*10,
+
+    height:10,
+
+    speed:Math.floor(Math.random()*10)*100 + 500
+
+  });
+
+});             
+</script>-->
+</body>
+
+</html>
