@@ -620,9 +620,6 @@
             $("a.links").click(function(){
                 var _index = $(this).index() + 1;
                 smoothScroll("0"+_index);
-
-                detectPos(menuFixedHeight, floorLength);
-
             });
 
             function smoothScroll(obj) {
