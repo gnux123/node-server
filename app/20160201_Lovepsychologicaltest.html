@@ -613,10 +613,9 @@
 
             //menuScrollAnimate
             var menuFixedHeight = $(".menu").height();
-            var floorLength = $(".Floor").length;
 
-            $(document).ready(function(){ detectPos(menuFixedHeight, floorLength); });
-            $(window).scroll(function(){ detectPos(menuFixedHeight, floorLength); });
+            $(document).ready(function(){ $(".Floor").detectPos(menuFixedHeight); });
+            $(window).scroll(function(){ $(".Floor").detectPos(menuFixedHeight); });
 
             $("a.links").click(function(){
                 var _index = $(this).index() + 1;
@@ -627,36 +626,37 @@
             });
 
             function smoothScroll(obj) {
-              var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
-              $body.animate({
-                scrollTop: $('.F'+obj).offset().top - menuFixedHeight
-              }, 1000);
+                var scrollTime = 1000;
+                var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+                $body.animate({
+                    scrollTop: $('.F'+obj).offset().top - menuFixedHeight
+                }, scrollTime);
               return false;
             }
+        });
 
-            function detectPos(obj, itemLen){
-                var menuHeight = obj;
+        (function($){
+            $.fn.detectPos = function(obj){
                 var pos = $(window).scrollTop();
+                var menuHeight = obj;
 
+                var floorLen = this.length;
                 var floorArr = [];
-                var floorLen = itemLen;
-                for(i=1; i <= floorLen; i++){
-                    var overHeight = $(".F0"+i).offset().top;
-                    floorArr[i-1] = overHeight;
-                }
 
-                for(i=0; i < floorArr.length; i++){
-                    if(pos >= floorArr[i] - menuFixedHeight){
+                for(i=0; i < floorLen; i++){
+                    var overHeight = $(".Floor").eq(i).offset().top;
+                    floorArr[i] = overHeight;
+
+                    if(pos >= floorArr[i] - menuHeight){
                         $(".menu").addClass("fixed");
                         $(".menu > a").eq(i).addClass("active").siblings(".active").removeClass("active");
-                    }else if(pos == 0 || pos < floorArr[0] - menuFixedHeight){
+                    }else if(pos < floorArr[0] - menuHeight){
                         $(".menu > a").removeClass("active");
                         $(".menu").removeClass("fixed");
                     }
                 }
             }
-
-        });
+        })(jQuery);
 
     </script>
 
