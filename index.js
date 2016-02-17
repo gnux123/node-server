@@ -78,7 +78,7 @@ router.get('/events/:eventName',function(req,res){
             };
 
             var chartNums = eventContent.indexOf('/title');
-            var test = eventContent.splice(chartNums+7,0, "<script src='https://code.jquery.com/jquery-1.12.0.min.js' charset='utf-8'></script>");
+            var test = eventContent.splice(chartNums+7,0, "<script src='https://code.jquery.com/jquery-1.12.0.min.js' charset='utf-8'></script><style>html,body { margin: 0; padding: 0; }</style>");
             var bodyChartNums = test.indexOf('/body');
             var test2 = test.splice(bodyChartNums+7,0, "<script src='/img/Activity/js/itemRender.js' charset='utf-8'></script><script type='text/javascript'>$(function(){ itemSingle.collectData(); });</script>");
             res.send(test2);
