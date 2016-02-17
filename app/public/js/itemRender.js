@@ -83,7 +83,9 @@ var itemSingle = {
 				switch($var) {
 					case "itemImgUrl":
 						var pic = value.split("_")[1] - 1;
-						return ctemp.replace(tempStr,dataShow["ImgUrlList"][pic]);
+						if(!!dataShow["ImgUrlList"][pic]){
+							return ctemp.replace(tempStr,dataShow["ImgUrlList"][pic]);
+						}
 					break;
 					case "itemLink":
 						return ctemp.replace(tempStr,"https://secure.newegg.com.tw/item?itemid="+nowId);

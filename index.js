@@ -1,6 +1,7 @@
 var request = require("request");
 var	cheerio = require('cheerio');
 var	express = require("express");
+var fs = require('fs');
 // var schedule = require("node-schedule");
 var	superagent = require("superagent");
 var	home = require("./home");
@@ -13,7 +14,8 @@ var apiUri = "http://www.newegg.com.tw/";
 
 
 //images and js folder
-app.use(express.static(__dirname + '/app/public'));
+app.use('/img/Activity', express.static(__dirname + '/app/public'));
+
 
 
 //client UI design
@@ -55,10 +57,35 @@ router.get('/date',function(req,res){
 router.get('/events/:eventName',function(req,res){
     var eventFileName = req.params.eventName;
 
-    console.log(req.params.eventName);
+    // console.log(req.params.eventName);
 
     if(eventFileName!=""){
-        res.sendfile(__dirname + '/app/'+ eventFileName +'.html');
+        // res.send(__dirname + '/app/'+ eventFileName +'.html');
+        var eventContent;
+        fs.readFile(__dirname + '/app/'+ eventFileName +'.html', "utf8", function(error,data){
+
+            if (error) {
+                return console.log(error);
+            }
+
+            processEventFile(data);
+        });
+
+        function processEventFile(eventContent){
+            //splice
+            String.prototype.splice = function( idx,rem,s) {
+                return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+            };
+
+            var chartNums = eventContent.indexOf('/title');
+            var test = eventContent.splice(chartNums+7,0, "<script src='https://code.jquery.com/jquery-1.12.0.min.js' charset='utf-8'></script>");
+            var bodyChartNums = test.indexOf('/body');
+            var test2 = test.splice(bodyChartNums+7,0, "<script src='/img/Activity/js/itemRender.js' charset='utf-8'></script><script type='text/javascript'>$(function(){ itemSingle.collectData(); });</script>");
+            res.send(test2);
+        }
+        // console.log(content.indexOf("head"));
+        // res.send(content);
+
     }else if(eventFileName==""){
         res.sendfile(__dirname + '/app/event.html');
     }
