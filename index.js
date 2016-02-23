@@ -5,12 +5,15 @@ var fs = require('fs');
 // var schedule = require("node-schedule");
 var	superagent = require("superagent");
 var	home = require("./home");
+var	events = require("./events");
 
 var app = express();
 var port = process.env.PORT || 3000;
 var router = express.Router();
 
 var apiUri = "http://www.newegg.com.tw/";
+var yelpApiUrl = "https://api.yelp.com/v2/search/?location=taipei&cc=TW&lang=zh";
+var secret = "&oauth_consumer_key=xdU_aD0Qq4SnaWWJLkJnRQ&oauth_consumer_secret=75D1ZjvYYk1KhZD44byjldr-CF8&oauth_token=C8ODZt0QETpQFqDUTMBwWefIuEGVeSZ3&oauth_token_secret=mZsjhFUJSB51KWIp9Rux-gNqq60&oauth_signature_method=HMAC-SHA1&oauth_signature=&oauth_timestamp=&oauth_nonce=";
 
 
 //images and js folder
