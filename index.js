@@ -56,41 +56,19 @@ router.get('/date',function(req,res){
 
 router.get('/events/:eventName',function(req,res){
     var eventFileName = req.params.eventName;
-
-    // console.log(req.params.eventName);
-
+    console.log(eventFileName);
     if(eventFileName!=""){
-        // res.send(__dirname + '/app/'+ eventFileName +'.html');
-        var eventContent;
         fs.readFile(__dirname + '/app/'+ eventFileName +'.html', "utf8", function(error,data){
-
             if (error) {
-                return console.log(error);
-            }
-
-            processEventFile(data);
+				return console.log(error);
+			}
+            res.send(events.control(data));
         });
-
-        function processEventFile(eventContent){
-            //splice
-            String.prototype.splice = function( idx,rem,s) {
-                return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
-            };
-
-            var chartNums = eventContent.indexOf('/title');
-            var test = eventContent.splice(chartNums+7,0, "<script src='https://code.jquery.com/jquery-1.12.0.min.js' charset='utf-8'></script><style>html,body { margin: 0; padding: 0; }</style>");
-            var bodyChartNums = test.indexOf('/body');
-            var test2 = test.splice(bodyChartNums+7,0, "<script src='/img/Activity/js/itemRender.js' charset='utf-8'></script><script type='text/javascript'>$(function(){ itemSingle.collectData(); });</script>");
-            res.send(test2);
-        }
-        // console.log(content.indexOf("head"));
-        // res.send(content);
-
     }else if(eventFileName==""){
-        res.sendfile(__dirname + '/app/event.html');
-    }
-});
+		res.sendfile(__dirname + '/app/event.html');
+	}
 
+});
 
 
 
@@ -111,21 +89,21 @@ router.get('/Home/:zone',function(req,res){
     });
 });
 
-router.get('/cates',function(req,res){
-    superagent.get(apiUri+"/Category/NextPageItemListMenu?CategoryID=3332&Page=2&ItemsQty=36").end(function (err, sres) {
-        if (err) { return next(err); }
-        var contents = cheerio.load(sres.text);
 
-        console.log(sres.text);
-
-        // if(zone == "GetLeftMenu") {
-        //     res.send(home.menu(contents));
-        // }else if(zone == "GetTopAdvertise") {
-        //     res.send(home.events(contents));
-        // }
-
+router.get('/yelp',function(req,res){
+    superagent.get(yelpApiUrl+secret).end(function(err,sres){
+        res.send(sres);
     });
 });
+
+// router.get('/cates',function(req,res){
+//     superagent.get(apiUri+"/Category/NextPageItemListMenu?CategoryID=3332&Page=2&ItemsQty=36").end(function (err, sres) {
+//         if (err) { return next(err); }
+//         var contents = cheerio.load(sres.text);
+//
+//         console.log(sres.text);
+//     });
+// });
 
 app.use('/', router);
 app.listen(port, function(){

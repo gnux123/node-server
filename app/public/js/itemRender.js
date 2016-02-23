@@ -39,7 +39,7 @@ var itemSingle = {
 	},
 	collectData: function(){
 		var collectIDS = itemSingle.collectItemsID();
-		console.log(collectIDS);
+		// console.log(collectIDS);
 		var queus = [];
 
 		$.each(collectIDS, function(key,value){
@@ -85,17 +85,24 @@ var itemSingle = {
 						var pic = value.split("_")[1] - 1;
 						if(!!dataShow["ImgUrlList"][pic]){
 							return ctemp.replace(tempStr,dataShow["ImgUrlList"][pic]);
+						}else{
+							return ctemp.replace(tempStr,"");
 						}
 					break;
 					case "itemLink":
 						return ctemp.replace(tempStr,"https://secure.newegg.com.tw/item?itemid="+nowId);
 					break;
 					case "itemName":
-						var ItemNanme = textStringProcess(value, dataShow["Name"]);
-						return ctemp.replace(tempStr, ItemNanme);
+						var ItemName = textStringProcess(value, dataShow["Name"]).toString();
+						if(!!ItemName){
+							return ctemp.replace(tempStr, ItemName);
+						}else{
+							return ctemp.replace(tempStr,"");
+						}
 					break;
 					case "itemSubTitle":
-						return ctemp.replace(tempStr,dataShow["Title"]);
+						var subTitle = subTitleFilter(dataShow["Title"]);
+						return ctemp.replace(tempStr,subTitle);
 					break;
 					case "itemMarketPrice":
 						return ctemp.replace(tempStr,"<span class='marketPrice'><span>NTD</span>"+numberWithCommas(dataShow["Price"])+"</span>");
@@ -119,6 +126,11 @@ var itemSingle = {
 				var _docsLength = obj.split("_")[1] - 3;
 				var nameString = string.slice(0, _docsLength);
 				return nameString+"...";
+			}
+
+			//subltitle Remove html tag
+			function subTitleFilter(obj){
+				return obj.replace(/(<([^>]+)>)/ig, "");
 			}
 
 		}).fadeIn();
