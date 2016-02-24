@@ -66,70 +66,87 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         }
     }
 
-    a.links {
+    .navs {
         position: absolute;
-        top:365px;
-        display:block;
-        width: 115px;
-        height: 115px;
+        z-index: 3;
+        top:385px;
+        left: 0;
+        width: 100%;
+        height: 80px;
 
+        background: rgba(255,158,169, .7);
     }
 
-    a.links:before {
-        position: absolute;
-        left:0;
-        top:0;
-        z-index:0;
-        display: block;
-        content: "";
-        width: 100%;
+    .navs > div {
+        position: relative;
+        width: 1200px;
         height: 100%;
-        background-image: url(/img/Activity/20160301_USATOP10/links_icon_hover.png);
+        margin: 0 auto;
+    }
+
+    .navs.fixed {
+        position: fixed;
+        top: 0;
+    }
+
+    a.links {
+        position: relative;
+        display: inline-block;
+        width: 320px;
+        height: 73px;
+        margin-top: 3.5px;
+        margin-left: 60px;
+        background-image: url(/img/Activity/20160301_USATOP10/links.png);
         background-repeat: no-repeat;
     }
 
-    a.links:hover:before {
+    a.links.link02 { background-position: -320px 0; }
+    a.links.link03 { background-position: -640px 0; }
+
+    a.links.link01:hover,
+    a.links.link01.active { background-position: 0px -73px; }
+
+    a.links.link01:hover:before,
+    a.links.link01:hover:after,
+    a.links.link01.active:before,
+    a.links.link01.active:after { display: none;}
+
+    a.links.link02:hover,
+    a.links.link02.active { background-position: -320px -73px; }
+
+    a.links.link02:hover:before,
+    a.links.link02:hover:after,
+    a.links.link02.active:before,
+    a.links.link02.active:after { display: none;}
+
+    a.links.link03:hover,
+    a.links.link03.active { background-position: -640px -73px; }
+
+    a.links.link03:hover:before,
+    a.links.link03:hover:after,
+    a.links.link03.active:before,
+    a.links.link03.active:after { display: none;}
+
+    a.links:before,
+    a.links:after {
+        position: absolute;
+        top: 50%;
+        z-index:2;
+        display: block;
+        content: "";
+        width: 23px;
+        height: 23px;
+        overflow: hidden;
+        margin-top: -11.5px;
+        background: url(/img/Activity/20160301_USATOP10/icon_star.png) center no-repeat;
+
         -webkit-animation:spin 3s linear infinite;
         -moz-animation:spin 3s linear infinite;
         animation:spin 3s linear infinite;
     }
 
-    a.links span {
-        position: relative;
-        z-index: 2;
-        display: block;
-        content: "";
-        width: 115px;
-        height: 115px;
-        background-image: url(/img/Activity/20160301_USATOP10/links_text.png);
-        background-repeat: no-repeat;
-    }
-
-    a.links.link01 {
-        left: 148px;
-    }
-
-    a.links.link01:before,
-    a.links.link01 span { background-position: 0 0; }
-
-    a.links.link02 {
-        left: 282px;
-    }
-
-    a.links.link02:before,
-    a.links.link02 span { background-position: -115px 0; }
-
-    a.links.link03 {
-        left: 415px;
-    }
-
-    a.links.link03:before,
-    a.links.link03 span { background-position: -230px 0; }
-
-
-
-
-
+    a.links:before { left: 15px; }
+    a.links:after { right: 18px; }
 
     /* ##各分類主題內框寬度設定 */
     .prods {
@@ -536,6 +553,81 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         line-height: 25px;
     }
 
+    .linkCate {
+        position: absolute;
+        display: block;
+    }
+
+    .linkCates01 {
+        top: 90px;
+        left: 10px;
+        width: 330px;
+        height: 265px;
+    }
+
+    .linkCates02 {
+        top: 90px;
+        left: 380px;
+        width: 400px;
+        height: 260px;
+    }
+
+    .linkCates03 {
+        top: 90px;
+        right: 55px;
+        width: 180px;
+        height: 365px;
+    }
+
+    .linkCates04 {
+        top: 360px;
+        left: 170px;
+        width: 390px;
+        height: 270px;
+    }
+
+    .linkCates05 {
+        top: 360px;
+        left: 580px;
+        width: 225px;
+        height: 270px;
+    }
+
+
+    .linkCates06 {
+        top: 725px;
+        left: 35px;
+        width: 340px;
+        height: 325px;
+    }
+
+    .linkCates07 {
+        top: 725px;
+        left: 375px;
+        width: 290px;
+        height: 275px;
+    }
+
+    .linkCates08 {
+        top: 725px;
+        right: 40px;
+        width: 335px;
+        height: 275px;
+    }
+
+    .linkCates09 {
+        top: 1050px;
+        left: 15px;
+        width: 455px;
+        height: 220px;
+    }
+
+    .linkCates10 {
+        top: 1030px;
+        right: 55px;
+        width: 480px;
+        height: 250px;
+    }
 
     /* resposive web design */
     @media screen and (min-width:0px) and (max-width: 1260px) {
@@ -544,10 +636,6 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         .noticeWrap { width:1040px; }
 
         .tables { z-index:1; width: 1040px; }
-
-        a.links.link01 { left: 20px; }
-        a.links.link02 { left: 155px; }
-        a.links.link03 { left: 290px; }
     }
 
 
@@ -558,30 +646,85 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 $(function(){
     activeImgLoad();
 
-    $("a.links").each(function(){
+    $(document).ready(function(){
+        $(".mainProds").detectPos({ navName: '.navs' });
+    });
+
+    $(window).scroll(function(){
+        $(".mainProds").detectPos({ navName: '.navs' });
+    });
+
+    $(".links").each(function(){
       $(this).click(function(){
         var $target = $(this).attr("class").split(" ").pop().split("link").pop();
         smoothScroll($target);
       });
     });
 
+
     function smoothScroll(obj) {
       var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
       $body.animate({
-        scrollTop: $('.mainProds'+obj).offset().top
+        scrollTop: $('.mainProds'+obj).offset().top - 80
       }, 1500);
       return false;
     }
 });
+
+(function($){
+    $.fn.detectPos = function(options){
+        var settings = $.extend({
+            navName: null,
+            navFixed: true
+        },options);
+
+        var menu = settings.navName;
+        var pos = $(window).scrollTop();
+
+        if(!!menu){
+            var menuHeight = $(menu).height();
+        }else{
+            var menuHeight = 0;
+        }
+
+
+        var floorLen = this.length;
+        var floorArr = [];
+
+        for(i=0; i < floorLen; i++){
+            var overHeight = this.eq(i).offset().top;
+            floorArr[i] = overHeight;
+
+            if(pos >= floorArr[i] - menuHeight){
+                $(menu).find("a").eq(i).addClass("active").siblings(".active").removeClass("active");
+            }else if(pos < floorArr[0] - menuHeight){
+                $(menu).find("a").removeClass("active");
+            }
+
+            if(settings.navFixed == true){
+                if(pos >= floorArr[0] - menuHeight){
+                    $(menu).addClass("fixed");
+                }else if(pos < floorArr[0] - menuHeight){
+                    $(menu).removeClass("fixed");
+                }
+            }else if(settings.navFixed == false){
+                return false;
+            }
+        }
+    }
+})(jQuery);
 </script>
 
 <div class="content">
     <div class="mainFocus">
-      <div class="focusContent">
-            <a class="links link01" href="javascript:void(0);"><span></span></a>
-            <a class="links link02" href="javascript:void(0);"><span></span></a>
-            <a class="links link03" href="javascript:void(0);"><span></span></a>
+      <div class="focusContent"></div>
+      <div class="navs">
+            <div>
+                <a class="links link01" href="javascript:void(0);"><span></span></a>
+                <a class="links link02" href="javascript:void(0);"><span></span></a>
+                <a class="links link03" href="javascript:void(0);"><span></span></a>
+            </div>
       </div>
     </div>
     <div id="mainProds01" class="mainProds mainProds01">
@@ -1331,7 +1474,17 @@ $(function(){
     <div id="mainProds03" class="mainProds mainProds03">
         <div class="prods prods03">
             <div class="tables">
+                <a class="linkCate linkCates01" target="_blank" href="http://www.newegg.com.tw/item?itemid=221809"></a>
+                <a class="linkCate linkCates02" target="_blank" href="http://www.newegg.com.tw/item?itemid=516385"></a>
+                <a class="linkCate linkCates03" target="_blank" href="http://www.newegg.com.tw/item?itemid=240468"></a>
+                <a class="linkCate linkCates04" target="_blank" href="http://www.newegg.com.tw/item?itemid=272766"></a>
+                <a class="linkCate linkCates05" target="_blank" href="http://www.newegg.com.tw/item?itemid=173382"></a>
 
+                <a class="linkCate linkCates06" target="_blank" href="http://www.newegg.com.tw/item?itemid=457834"></a>
+                <a class="linkCate linkCates07" target="_blank" href="http://www.newegg.com.tw/item?itemid=515084"></a>
+                <a class="linkCate linkCates08" target="_blank" href="http://www.newegg.com.tw/item?itemid=450690"></a>
+                <a class="linkCate linkCates09" target="_blank" href="http://www.newegg.com.tw/item?itemid=285187"></a>
+                <a class="linkCate linkCates10" target="_blank" href="http://www.newegg.com.tw/item?itemid=526595"></a>
             </div>
         </div>
     </div>
