@@ -676,17 +676,24 @@ $(function(){
     $.fn.detectPos = function(options){
         var settings = $.extend({
             navName: null,
+            navHeight: null,
             navFixed: true
         },options);
 
+        scrollNow();
+
         var menu = settings.navName;
+        var navH = settings.navHeight;
         var pos = $(window).scrollTop();
 
-        if(!!menu){
+        if(!!menu && !!navH){
+            var menuHeight = navH;
+        }else if(!!menu && navH == null){
             var menuHeight = $(menu).height();
-        }else{
+        }else {
             var menuHeight = 0;
         }
+
 
 
         var floorLen = this.length;
@@ -698,7 +705,7 @@ $(function(){
 
             if(pos >= floorArr[i] - menuHeight){
                 $(menu).find("a").eq(i).addClass("active").siblings(".active").removeClass("active");
-            }else if(pos < floorArr[0] - menuHeight){
+            }else if(pos < (floorArr[0] - menuHeight)){
                 $(menu).find("a").removeClass("active");
             }
 

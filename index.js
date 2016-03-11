@@ -110,5 +110,5 @@ router.get('/yelp',function(req,res){
 
 app.use('/', router);
 app.listen(port, function(){
-	console.log('server start');
+	console.log('server start http://localhost:3000/');
 });

@@ -95,14 +95,30 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         }
     }
 
+    .activeFonts {
+        position: absolute;
+        top: 31px;
+        right: 0;
+        width: 193px;
+        height: 78px;
+        background: url(/img/Activity/20160316_HappyEaster/activeFont.gif) center no-repeat;
+        background-size: 100%;
+    }
+
     .navs {
         position: absolute;
         z-index: 3;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 138px;
+        height: 116px;
         background: url(/img/Activity/20160316_HappyEaster/menu_bg.png) center no-repeat;
+    }
+
+    .navs.fixed {
+        position: fixed;
+        left:0;
+        top: -35px;
     }
 
     .navs > div {
@@ -120,7 +136,7 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         width: 215px;
         height: 40px;
         padding-left: 45px;
-        margin-top: 49px;
+        margin-top: 38px;
         margin-left: 60px;
     }
 
@@ -136,11 +152,29 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         background-repeat: no-repeat;
     }
 
-    a.links:hover:before {
+    a.links.link01:before {
+        -webkit-animation:spin 1s infinite;
+        -moz-animation:spin 1s infinite;
+        animation:spin 1s infinite;
+    }
+
+    a.links.link02:before {
+        -webkit-animation:spin 1.2s infinite;
+        -moz-animation:spin 1.2s infinite;
+        animation:spin 1.2s infinite;
+    }
+
+    a.links.link03:before {
+        -webkit-animation:spin 1.4s infinite;
+        -moz-animation:spin 1.4s infinite;
+        animation:spin 1.4s infinite;
+    }
+
+    /*a.links:hover:before {
         -webkit-animation:spin 0.8s;
         -moz-animation:spin 0.8s;
         animation:spin 0.8s;
-    }
+    }*/
 
     a.links > span {
         display: block;
@@ -158,6 +192,14 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 
     a.links.link03:before { background-position: 0 -84px;}
     a.links.link03 > span { background-position: 0 -80px; }
+
+    a.links.link01:hover > span,
+    a.links.link01.active > span { background-position: -215px 0;}
+    a.links.link02:hover > span,
+    a.links.link02.active > span { background-position: -215px -40px; }
+    a.links.link03:hover > span,
+    a.links.link03.active > span { background-position: -215px -80px; }
+
 
     .gamePopup,
     .gameMask {
@@ -757,6 +799,20 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 $(function(){
     activeImgLoad();
 
+    $(document).ready(function(){
+        $(".mainProds").detectPos({
+            navName: '.navs',
+            navHeight: 113
+        });
+    });
+
+    $(window).scroll(function(){
+        $(".mainProds").detectPos({
+            navName: '.navs',
+            navHeight: 113
+        });
+    });
+
 
     $("a.links").each(function(){
       $(this).click(function(){
@@ -769,7 +825,7 @@ $(function(){
       var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
       $body.animate({
-        scrollTop: $('.mainProds'+obj).offset().top
+        scrollTop: $('.mainProds'+obj).offset().top - 65
       }, 1500);
       return false;
     }
@@ -821,6 +877,54 @@ $(function(){
         }
     });
 });
+
+(function($){
+    $.fn.detectPos = function(options){
+        var settings = $.extend({
+            navName: null,
+            navHeight: null,
+            navFixed: true
+        },options);
+
+        var menu = settings.navName;
+        var navH = settings.navHeight;
+        var pos = $(window).scrollTop();
+
+        if(!!menu && !!navH){
+            var menuHeight = navH;
+        }else if(!!menu && navH == null){
+            var menuHeight = $(menu).height();
+        }else {
+            var menuHeight = 0;
+        }
+
+
+
+        var floorLen = this.length;
+        var floorArr = [];
+
+        for(i=0; i < floorLen; i++){
+            var overHeight = this.eq(i).offset().top;
+            floorArr[i] = overHeight;
+
+            if(pos >= floorArr[i] - menuHeight){
+                $(menu).find("a").eq(i).addClass("active").siblings(".active").removeClass("active");
+            }else if(pos < (floorArr[0] - menuHeight)){
+                $(menu).find("a").removeClass("active");
+            }
+
+            if(settings.navFixed == true){
+                if(pos >= floorArr[0] - menuHeight){
+                    $(menu).addClass("fixed");
+                }else if(pos < floorArr[0] - menuHeight){
+                    $(menu).removeClass("fixed");
+                }
+            }else if(settings.navFixed == false){
+                return false;
+            }
+        }
+    }
+})(jQuery);
 </script>
 
 <div class="content">
@@ -832,7 +936,7 @@ $(function(){
         <a class="subLinks sub01" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530178"></a>
     </div>
     <div class="pops pop9">
-        <a class="mainLink" target="_blank" href="https://secure.newegg.com.tw/item?itemid=524864"></a>
+        <a class="mainLink" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530549"></a>
         <a class="subLinks sub01" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530178"></a>
         <a class="subLinks sub02" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530172"></a>
     </div>
@@ -840,10 +944,11 @@ $(function(){
         <a class="mainLink" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530548"></a>
         <a class="subLinks sub01" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530178"></a>
         <a class="subLinks sub02" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530172"></a>
-        <a class="subLinks sub03" target="_blank" href="https://secure.newegg.com.tw/item?itemid=524864"></a>
+        <a class="subLinks sub03" target="_blank" href="https://secure.newegg.com.tw/item?itemid=530549"></a>
     </div>
     <div class="mainFocus">
       <div class="focusContent">
+          <div class="activeFonts"></div>
           <div class="goldEgg egg-01"></div>
           <div class="goldEgg egg-02"></div>
           <div class="goldEgg egg-03"></div>
@@ -863,7 +968,7 @@ $(function(){
             </div>
       </div>
     </div>
-    <div class="mainProds mainFocus2">
+    <div class="mainFocus2">
         <div class="prods focus2"></div>
     </div>
     <div id="mainProds01" class="mainProds mainProds01">
