@@ -113,19 +113,6 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         line-height: 2;
     }
 
-    /*.navs > .navsContent a.link03:before {
-        position: absolute;
-        z-index: 1;
-        top:0;
-        right:0;
-        display: block;
-        content: "";
-        width: 8px;
-        height: 55px;
-        background: url(2/img/Activity/20160115_aNewLook3/link_bg.jpg) top left no-repeat;
-
-    }*/
-
     .navs > .navsContent a.link01 { background-position: 0 0; }
     .navs > .navsContent a.link01:hover { background-position: 0 -55px; }
     .navs > .navsContent a.link02 { background-position: -257px 0; }
@@ -461,7 +448,7 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
         padding:0 0 40px 0;
     }
 
-    .notice > h2 {
+    .notice h2 {
 
         color:#000;
         margin: 20px 0;
@@ -508,6 +495,7 @@ body{margin:0;padding:0;font-family:arial, "微軟正黑體"}.wrapper{width:100%
 <script type="text/javascript">
 $(function(){
     activeImgLoad();
+
     var noticeArr = [{
         common: [
             "除外商品:部分商品排除，不參與滿額折活動。",
@@ -524,7 +512,7 @@ $(function(){
         mounth02: "<span style='font-weight:bold;'>滿額折期間(依活動頁刊頭為主)，<u>2/1-2/16</u>全站結帳滿3,000(含)以上可參加滿額現折330元，滿6,000(含)以上可參加滿額現折660元，<div style='display:inline; border:1px solid #DF1B33; margin-right:4px;'> 開工加碼送紅包 </div><u>2/12-2/16</u>全站結帳滿8,000(含)以上可參加滿額現折1,000元(部分商品除外)。</span><br/>滿額折活動限會員參加，每一帳號每日限參加一次。相關說明請參照各活動頁面說明，部分商品不適用。採單一門回饋，恕不累折，亦不可跨活動計算折價，相關優惠將以購物車結帳時計算金額為主。",
         newYeartips: {
             title: "<h2>春節期間服務暨出貨調整公告</h2>",
-            content: "<p>2016/2/6(六)-2/14(日)適逢春節農曆休假期間，新蛋全球生活網將暫停客服中心的電話與信件回覆服務<br>若您有任何需要，請登入新蛋全球生活網於「我的帳戶>帳戶管理>問答中心」留言或於2/15(一)起致電客服中心洽詢(電話：02-8170-6025)<br>客服中心將於2/15(一)起恢復服務並儘速回覆您的問題，如有不便，敬請見諒</p><ul>另春節期間之配送作業調整說明如下：<li>國內宅配商品(實際配送依物流作業為準)<br>2/3(三)前訂購完成之商品，預計2/4(四)起展開配送<br>2/4(四)後訂購完成之商品，預計2/16(二)起展開配送</li><li>海外進口商品<br>2/3(三)以前未完成進口報關之商品及2/4(四)-2/14(日)期間之訂單，將於2/15(一)開始進行作業，預計到貨時間需9~14天</li></ul>"
+            content: "<p>2016/2/6(六)-2/14(日)適逢春節農曆休假期間，新蛋全球生活網將暫停客服中心的電話與信件回覆服務<br>若您有任何需要，請登入新蛋全球生活網於「我的帳戶>帳戶管理>問答中心」留言或於2/15(一)起致電客服中心洽詢(電話：02-8170-6025)<br>客服中心將於2/15(一)起恢復服務並儘速回覆您的問題，如有不便，敬請見諒</p><ol>另春節期間之配送作業調整說明如下：<li>國內宅配商品(實際配送依物流作業為準)<br>2/3(三)前訂購完成之商品，預計2/4(四)起展開配送<br>2/4(四)後訂購完成之商品，預計2/16(二)起展開配送</li><li>海外進口商品<br>2/3(三)以前未完成進口報關之商品及2/4(四)-2/14(日)期間之訂單，將於2/15(一)開始進行作業，預計到貨時間需9~14天</li></ol>"
         }
     }];
 
@@ -537,22 +525,28 @@ $(function(){
         noticontent.append("<li>"+value+"</li>");
     });
 
-
     var DateArr = [
         "2016/01/29 10:00:00",
-        "2016/02/01 10:00:00",
+        "2016/01/27 10:00:00",
         "2016/02/02 10:00:00",
         "2016/02/03 10:00:00",
         "2016/02/04 10:00:00"
     ];
 
-    countdown(DateArr,function(key) {
+    var DateArr2 = [
+        "2016/01/27 10:00:00",
+        "2016/01/27 10:00:00",
+        "2016/01/27 10:00:00",
+        "2016/01/27 10:00:00",
+        "2016/01/27 10:00:00"
+    ];
+
+    countdown(DateArr2,function(key) {
         switch(key){
             case 0:
                 $(".date0129").removeClass("justwait");
             break;
             case 1:
-                //0201events
                 event0201();
             break;
             case 2:
@@ -569,14 +563,14 @@ $(function(){
 
     function event0201(){
         $(".date0201").removeClass("justwait");
-        $(".wrapper, .mainFocus").css("background-image","url(/img/Activity/20160115_aNewLook3/mainFocus_0201.jpg)");
-        $("a.links.linkEvents").css("background-image","url(/img/Activity/20160115_aNewLook3/eventsLink_0201.png)");
-        $("a.links.linkEvents").attr("href","https://secure.newegg.com.tw/activity/20160127_cnyannouncement");
+        $(".wrapper, .mainFocus").css("background-image", "url(/img/Activity/20160115_aNewLook3/mainFocus_0201.jpg)");
+        $("a.links.linkEvents").css("background-image", "url(/img/Activity/20160115_aNewLook3/eventsLink_0201.png)");
+        $("a.links.linkEvents").attr("href", "https://secure.newegg.com.tw/activity/20160127_cnyannouncement");
         $(".promoLinks_content").hide();
         $("#date0201_promoLinks").show();
 
         noticontent.find("li").eq(0).html(noticeArr[0]["mounth02"]);
-        $(".noticeWrap").append(newYearTips["title"]+newYearTips["content"]);
+        $(".noticeWrap").append(newYearTips["title"] + newYearTips["content"]);
     }
 
 
@@ -622,6 +616,7 @@ $(function(){
         var detectArr = $.isArray(obj);
         var tempArr = [];
 
+
         if(detectArr == true){
             for(i=0; i<obj.length; i++) {
                 tempArr.push(obj[i]);
@@ -632,7 +627,7 @@ $(function(){
 
         $.each(tempArr, function(key,value) {
 
-            $("body").append("<div class='times"+key+"'></div>");
+            $("body").append("<div class='times"+key+"' style='display:none;'></div>");
 
             var timeout = [];
             var finalTimeSet = getNewTime(value);
@@ -674,52 +669,68 @@ $(function(){
                     }
                 }
             }
-            xmlHttp.open('HEAD',window.location.href.toString(),false);
+            var $logoUrl = "/Themes/img/Common/logo.jpg";
+
+            xmlHttp.open('HEAD',$logoUrl.toString(),false);
             xmlHttp.setRequestHeader("Content-Type", "text/html");
             xmlHttp.send('');
             var dates = new Date(xmlHttp.getResponseHeader("Date")).toString().split(" ");
+            console.log(dates);
 
-            var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            var Mounth = dates[1].toUpperCase();
-            switch(Mounth){
-                case mounthArr[0]:
-                    Mounth = "01";
-                    break;
-                case mounthArr[1]:
-                    Mounth = "02";
-                    break;
-                case mounthArr[2]:
-                    Mounth = "03";
-                    break;
-                case mounthArr[3]:
-                    Mounth = "04";
-                    break;
-                case mounthArr[4]:
-                    Mounth = "05";
-                    break;
-                case mounthArr[5]:
-                    Mounth = "06";
-                    break;
-                case mounthArr[6]:
-                    Mounth = "07";
-                    break;
-                case mounthArr[7]:
-                    Mounth = "08";
-                    break;
-                case mounthArr[8]:
-                    Mounth = "09";
-                    break;
-                case mounthArr[9]:
-                    Mounth = "10";
-                    break;
-                case mounthArr[10]:
-                    Mounth = "11";
-                    break;
-                case mounthArr[11]:
-                    Mounth = "12";
-                    break;
+            if(navigator.userAgent.indexOf("MSIE")>0) {
+                if(navigator.userAgent.indexOf("MSIE 7.0") > 0 || navigator.userAgent.indexOf("MSIE 8.0") > 0 || navigator.userAgent.indexOf("MSIE 9.0") >0){
+                    return dates[5]+"/"+mounthCalc(dates[1])+"/"+dates[2]+" "+dates[3];
+                }
+            }else{
+                return dates[3]+"/"+mounthCalc(dates[1])+"/"+dates[2]+" "+dates[4];
             }
-            return dates[3]+"/"+Mounth+"/"+dates[2]+" "+dates[4];
+
+            function mounthCalc(obj){
+                var mounthArr = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+                var Mounth = obj.toUpperCase();
+                switch(Mounth){
+                    case mounthArr[0]:
+                        Mounth = "01";
+                        break;
+                    case mounthArr[1]:
+                        Mounth = "02";
+                        break;
+                    case mounthArr[2]:
+                        Mounth = "03";
+                        break;
+                    case mounthArr[3]:
+                        Mounth = "04";
+                        break;
+                    case mounthArr[4]:
+                        Mounth = "05";
+                        break;
+                    case mounthArr[5]:
+                        Mounth = "06";
+                        break;
+                    case mounthArr[6]:
+                        Mounth = "07";
+                        break;
+                    case mounthArr[7]:
+                        Mounth = "08";
+                        break;
+                    case mounthArr[8]:
+                        Mounth = "09";
+                        break;
+                    case mounthArr[9]:
+                        Mounth = "10";
+                        break;
+                    case mounthArr[10]:
+                        Mounth = "11";
+                        break;
+                    case mounthArr[11]:
+                        Mounth = "12";
+                        break;
+                }
+
+                return Mounth;
+            }
+
+
         }
 
         function getNewTime(obj){
@@ -727,7 +738,6 @@ $(function(){
             return ts;
         }
     }
-
 });
 </script>
 
@@ -1855,23 +1865,25 @@ $(function(){
 
     <div class="notice">
         <div class="promoLinks">
+
             <div class="promoLinks_content">
                 <a class="plinks plink01" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_HappyValentinesDay">情人節快樂</a>
                 <a class="plinks plink02" target="_blank" href="https://secure.newegg.com.tw/activity/20160115_usasaleIII">美國新蛋直購</a>
                 <a class="plinks plink03" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_VacationTravel">旅行清單</a>
             </div>
+
             <div id="date0201_promoLinks" class="promoLinks_content" style="display: none;">
-                <a class="plinks plink01" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_HappyValentinesDay">春節鉅獻</a>
-                <a class="plinks plink02" target="_blank" href="https://secure.newegg.com.tw/activity/20160115_usasaleIII">快樂情人節</a>
-                <a class="plinks plink03" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_VacationTravel">美國新蛋直購</a>
+                <a class="plinks plink01" target="_blank" href="https://secure.newegg.com.tw/activity/20160201_ChineseNewYear">春節鉅獻</a>
+                <a class="plinks plink02" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_HappyValentinesDay">快樂情人節</a>
+                <a class="plinks plink03" target="_blank" href="https://secure.newegg.com.tw/activity/20160201_usabrandsale">美國新蛋直購</a>
                 <a class="plinks plink04" target="_blank" href="https://secure.newegg.com.tw/activity/20160122_VacationTravel">旅行清單</a>
             </div>
         </div>
-      <div class="noticeWrap">
-        <h2>活動注意事項</h2>
-        <ol>
-        </ol>
-      </div>
+        <div class="noticeWrap">
+            <h2>活動注意事項</h2>
+            <ol>
+            </ol>
+        </div>
     </div>
 </div>
 </body>
