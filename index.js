@@ -15,6 +15,12 @@ var apiUri = "http://www.newegg.com.tw/";
 var yelpApiUrl = "https://api.yelp.com/v2/search/?location=taipei&cc=TW&lang=zh";
 var secret = "&oauth_consumer_key=xdU_aD0Qq4SnaWWJLkJnRQ&oauth_consumer_secret=75D1ZjvYYk1KhZD44byjldr-CF8&oauth_token=C8ODZt0QETpQFqDUTMBwWefIuEGVeSZ3&oauth_token_secret=mZsjhFUJSB51KWIp9Rux-gNqq60&oauth_signature_method=HMAC-SHA1&oauth_signature=&oauth_timestamp=&oauth_nonce=";
 
+//cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //images and js folder
 app.use('/img/Activity', express.static(__dirname + '/app/public'));
@@ -45,6 +51,29 @@ router.get('/getData/:itemID',function(req,res){
         }
     });
 });
+
+//postData
+router.get('/postData/',function(req,res){
+    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:50118');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // res.setHeader('Access-Control-Allow-Credentials', true);
+    // // var items = req.params.itemID;
+    // // var itemsDetail = [];
+    request({
+        url: "http://localhost:50118/api/Item/getItemDetailByItemIds",
+        // url: apiUri+"/api/Item/getItemDetailByItemId?itemid="+items,
+        method: "POST",
+        json: ["482308","432981"]
+    }, function(e,r,b) {
+        if(!e) {
+            // b = b.replace(/\\/g,"");
+            res.send(b);
+        }
+    });
+});
+
 
 router.get('/votes',function(req,res){
     res.sendfile(__dirname + '/app/votingAnayltics.html');
