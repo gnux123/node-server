@@ -30,13 +30,6 @@ var itemSingle = {
 				}
 			}
 		}
-
-		//[case2]
-		// itemSingle.target.each(function(){
-		//     var _ID = $(this).attr("data-itemid");
-		//     itemSingle.itemsID.push(_ID);
-		// }).hide();
-
 		return itemSingle.itemsID;
 	},
 	collectData: function(){
@@ -46,10 +39,7 @@ var itemSingle = {
 
 		$.each(collectIDS, function(key,value){
 			queus[key] = itemSingle.getData(value);
-			// queus.push();
-			// $.each(collectIDS[key],function(index, item){
-			// 	queus.push(itemSingle.getData(item));
-			// });
+
 		});
 
 		$.when.apply($,queus).then(function(data){
@@ -58,7 +48,7 @@ var itemSingle = {
 
 				for(var j=0; j < dataLen; j++){
 					var itemData = arguments[i][0][j],
-						itemID = jdata.Id.toString();
+						itemID = itemData.Id.toString();
 					itemSingle.itemsDataCollect[itemID] = itemData;
 				}
 			}

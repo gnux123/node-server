@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.fullpage/2.5.9/jquery.fullPage.min.css">
+		<script src="https://cdn.jsdelivr.net/jquery.fullpage/2.5.9/jquery.fullPage.min.js" charset="utf-8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.7/jquery.slimscroll.min.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#fullpage").fullpage({
+					anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage'],
+					scrollOverflow: true,
+					navigation: true,
+					navigationPosition: "right"
+				});
+			});
+		</script>
+		<style>
+			.header {
+				width: 100%;
+				height: 40px;
+				background: #333;
+			}
+			.mainSence .main {
+				width: 100%;
+				height: 919px;
+			}
+
+			#fp-nav li:first-child,
+			#fp-nav li.active:first-child {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header"></div>
+		<div id="fullpage">
+			<div class="section mainSence">
+				<div class="main">
+					main1235
+				</div>
+			</div>
+			<div class="section">
+				<div class="main"></div>
+			</div>
+			<div class="section">
+				<div class="main"></div>
+			</div>
+			<div class="section">
+				<div class="main"></div>
+			</div>
+			<div class="section">
+				<div class="main"></div>
+			</div>
+			<div class="section">
+				<div class="main"></div>
+			</div>
+		</div>
+	</body>
+</html>

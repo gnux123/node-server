@@ -57,15 +57,8 @@ router.get('/getData/:itemID',function(req,res){
     });
 });
 
-//postData
+//postProdsData
 router.post('/postData/',function(req,res){
-    // res.setHeader('Content-Type', 'application/json');
-    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:50118');
-    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // res.setHeader('Access-Control-Allow-Credentials', true);
-    // // var items = req.params.itemID;
-    // // var itemsDetail = [];
     var dataKey = Object.keys(req.body)[0];
 
     request({
