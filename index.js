@@ -37,7 +37,7 @@ router.get('/',function(req,res){
     res.sendfile(__dirname + '/app/test.html');
 });
 
-
+//getData
 router.get('/getData/:itemID',function(req,res){
     res.setHeader('Content-Type', 'application/json');
     // res.setHeader('Access-Control-Allow-Origin', '*');
@@ -61,10 +61,12 @@ router.get('/getData/:itemID',function(req,res){
 router.post('/postData',function(req,res){
     res.setHeader('Content-Type', 'application/json');
 
+    var itemIds = Object.keys(req.body)[0];
+
     request({
         url: apiUri+"/api/Item/getItemDetailByItemIds",
         method: "POST",
-        body: req.body,
+        body: req.body[itemIds],
         json: true
     }, function(e,r,b) {
         console.log('code: '+ r.statusCode);
