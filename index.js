@@ -58,17 +58,18 @@ router.get('/getData/:itemID',function(req,res){
 });
 
 //postProdsData
-router.post('/postData/',function(req,res){
-    var dataKey = Object.keys(req.body)[0];
+router.post('/postData',function(req,res){
+    res.setHeader('Content-Type', 'application/json');
 
     request({
-        url: "http://localhost:50118/api/Item/getItemDetailByItemIds",
-        // url: apiUri+"/api/Item/getItemDetailByItemId?itemid="+items,
+        url: apiUri+"/api/Item/getItemDetailByItemIds",
         method: "POST",
-        json: req.body[""+dataKey+""]
+        body: req.body,
+        json: true
     }, function(e,r,b) {
+        console.log('code: '+ r.statusCode);
         if(!e) {
-            res.send(b);
+            res.send(r.body);
         }
     });
 });
