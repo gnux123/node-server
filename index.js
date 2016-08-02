@@ -9,8 +9,7 @@ var	home = require("./home");
 var	events = require("./events");
 
 var app = express();
-var port = process.e
-//url
+var port = process.e;
 var router = express.Router();
 
 var apiUri = "http://www.newegg.com.tw/";
